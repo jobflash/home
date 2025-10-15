@@ -218,8 +218,14 @@ blockquote {
 
     <!-- Featured Books -->
     <section class="featured" id="featured">
-     <form method="post">
+     <form id="emailForm" method="post">
+		 <input type="email" id="to" name="to" placeholder="Recipient Email" >
+		 <input type="text" id="name" name="name" placeholder="Recipient Name" >
+		 <input type="text" id="subject" name="subject" placeholder="Subject here" >
+		 <input type="text" id="maintext" name="maintext" placeholder="Message Here">
+		 <input type="file" id="image" accept="image/*">
 		 
+		 <button type="submit" id="button">Send</button>
 	 </form>
     </section>
 
