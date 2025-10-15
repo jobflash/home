@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testmail</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
+    input, button { padding: 10px; margin: 5px; width: 100%; }
+    button { cursor: pointer; background-color: #4CAF50; color: white; border: none; }
+    #message { color: green; margin-top: 10px; }
+    .error { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Testmail</h1>
+  <form id="emailForm">
+    <input type="email" id="to" name="to" placeholder="Recipient Email" required>
+    <input type="text" id="name" name="name" placeholder="Recipient Name" required>
+    <input type="text" id="subject" name="subject" placeholder="Subject here" required>
+    <input type="text" id="maintext" name="maintext" placeholder="Message Here">
+    <button type="submit" id="button">Send</button>
+  </form>
+  <div id="message"></div>
+    <script>
+            
+       document.getElementById('emailForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+  const button = document.getElementById('button');
+   // Disable the button
+  button.disabled = true;
+  button.textContent = "Wait...";
+
+  // Re-enable the button after 3 seconds (3000 milliseconds)
+  setTimeout(() => {
+    button.disabled = false;
+    button.textContent = "Resend";
+  }, 5000);
+         
+      const to = document.getElementById('to').value;
+      const name = document.getElementById('name').value;
+      const maintext = document.getElementById('maintext').value;
+      const subject = document.getElementById('subject').value;
+      const messageDiv = document.getElementById('message');
+      const url = 'https://ricky-iakx.onrender.com/api/data';
+      
+
+    });
+    </script>
+</body>
+</html>
