@@ -419,7 +419,109 @@ setTimeout(slideInAd, 1000);
 // Add event listener to close the ad when the button is clicked
 closeAdButton.addEventListener("click", slideOutAd);
 
-	
+	         function showForm(formId) {
+            // Hide all forms
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            // Show the specified form
+            document.getElementById(formId).classList.add('active');
+        }
+
+	        let allFormData = {};
+
+        // Form 1 submission
+        document.getElementById('personalForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn1');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
+                           `👤 Name: ${data.name}\n` +
+                           `📧 Email: ${data.email}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}`;
+            
+            alert(message);
+   
+                showForm('form2');
+    
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
+        // Form 2 submission
+        document.getElementById('addressForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn2');
+            
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 2 Submitted - Address Information**\n\n` +
+                           `🏠 Street: ${data.street}\n` +
+                           `🏙️ City: ${data.city}\n` +
+                           `📮 Zip Code: ${data.zipcode}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}`;
+            
+            alert(message);
+            
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
+        // Form 3 submission
+        document.getElementById('preferencesForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn3');
+            
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 3 Submitted - Preferences**\n\n` +
+                           `📰 Newsletter: ${data.newsletter}\n` +
+                           `💬 Comments: ${data.comments || 'None'}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}\n\n` +
+                           `✅ **All Forms Completed!**`;
+            
+            alert(message);
+            
+                const summaryMessage = `📊 **Complete Form Submission Summary**\n\n` +
+                                     `👤 Personal Info:\n` +
+                                     `   • Name: ${allFormData.name}\n` +
+                                     `   • Email: ${allFormData.email}\n\n` +
+                                     `🏠 Address Info:\n` +
+                                     `   • Street: ${allFormData.street}\n` +
+                                     `   • City: ${allFormData.city}\n` +
+                                     `   • Zip Code: ${allFormData.zipcode}\n\n` +
+                                     `⚙️ Preferences:\n` +
+                                     `   • Newsletter: ${allFormData.newsletter}\n` +
+                                     `   • Comments: ${allFormData.comments || 'None'}`;
+            
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
     
   </script>
 </html>
