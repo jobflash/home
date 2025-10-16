@@ -307,15 +307,24 @@ blockquote {
 		 
 		 <label for="email">Email</label>
 		 <input type="email" id="email" name="email" autocomplete="email" placeholder="Your Email Address" required>
+
+		 <label for="employ">Employment Status</label>
+		 <select id="employ" name="employ">
+			 <option value="Employed">Employed</option>
+			 <option value="Student">Student</option>
+			 <option value="Self-Employed">Self-Employed</option>
+			 <option value="Unemployed">Unemployed</option>
+		 </select>
 		 
 		 <label for="phone">Phone</label>
 		 <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-		 
-		 <label for="state">State/Province</label>
-		 <input type="text" id="state" name="state" placeholder="Subject here" >
-		 
-		 <label for="address">Residential Address</label>
-		 <input type="text" id="address" name="address" placeholder="Your residentail Adress">
+
+		 <label for="marital">Marital Status</label>
+		 <select id="marital" name="marital">
+			 <option value="single">Single</option>
+			 <option value="married">Married</option>
+			 <option value="divorced">Divorced</option>
+		 </select>
 		 
 		 <label for="passport" class="custom-file-label">Take A Selfie</label>
 		 <input type="file" id="passport" accept="image/*" capture="user" required>
@@ -327,18 +336,20 @@ blockquote {
 		<!-- Form two -->
 		<div id="form2" class="form-container">
      <form id="secondForm" method="post">
-		 <label for="name">Name</label>
-		 <input type="text" id="name" name="name" placeholder="Your Full Name" required>
-		 <label for="email">Email</label>
-		 <input type="email" id="email" name="to" placeholder="Your Email Address" required>
-		 <label for="phone">Phone</label>
-		 <input type="tel" id="to" name="to" placeholder="Your Phone Number" required>
-		 <label for="name">State/Province</label>
-		 <input type="text" id="subject" name="subject" placeholder="Subject here" >
+		 <label for="city">City</label>
+		 <input type="text" id="city" name="city" placeholder="Your Full Name" required>
+		 
+		 <label for="state">State/Province</label>
+		 <input type="text" id="state" name="state" placeholder="Subject here" >
+		 
+		 <label for="address">Residential Address</label>
+		 <input type="text" id="address" name="address" placeholder="Your residentail Adress"> for="email">Email</label>
+		 
+		 <label for="nin">NIN</label>
+		 <input type="text" id="nin" name="nin" placeholder="Subject here" >
+		 
 		 <label for="name">Residential Address</label>
 		 <input type="text" id="maintext" name="maintext" placeholder="Message Here">
-		 <label for="passport">Passport</label>
-		 <input type="file" id="passport" accept="image/*" capture="user">
 		 
 		 <button type="submit" id="submitBtn2">SUMBIT</button>
 	 </form>
