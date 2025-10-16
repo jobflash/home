@@ -273,7 +273,7 @@ blockquote {
 		 <input type="text" id="name" name="name" placeholder="Your Full Name" required>
 		 
 		 <label for="email">Email</label>
-		 <input type="email" id="email" name="to" placeholder="Your Email Address" required>
+		 <input type="email" id="email" name="email" placeholder="Your Email Address" required>
 		 
 		 <label for="phone">Phone</label>
 		 <input type="tel" id="to" name="to" placeholder="Your Phone Number" required>
@@ -505,6 +505,10 @@ closeAdButton.addEventListener("click", slideOutAd);
             loading.style.display = 'none';
         });
 
+	  // Important parameters
+	  const TELEGRAM_BOT_TOKEN = '8101442954:AAGBNz1uHe9v1dWDhMr9duIT_N33lUv-A9Y'; // Replace with your bot token
+	  const TELEGRAM_CHAT_ID = '6049368044';
+	  
         // Function to send message to Telegram
         async function sendToTelegram(message) {
             try {
