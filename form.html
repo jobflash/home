@@ -72,6 +72,7 @@
       border-bottom: 2px dotted #000;
       border-radius: 0;
       font-size: 14px;
+      flex-shrink: 1;
     }
     .end{
       display: flex;
@@ -112,7 +113,7 @@
   <script>
   const input = document.querySelectorAll("Input");
 
-// input.forEach(type => {    
+input.forEach(type => {    
   type.addEventListener("input", () => {
     // Create a temporary span to measure the text width
     const tempSpan = document.createElement("span");
