@@ -92,8 +92,8 @@
     </div>
     <div class="body">
       <p>This Form is confirms that the grant release application submitted by the grantee below has been officially approved.</p>
-      <h6>Grantee's Name:</h6><input type="text"><h6>Grantee's Date of Birth:</h6><input type="text"><h6>Grantee's Gender:</h6><input type="text">
-      <h6>Grantee's Employment Status:</h6><input type="text"><h6>Grantee's Address:</h6><input type="text"><h6>Grantee's NIN:</h6><input type="text">
+      <h6>Grantee's Name:</h6><input type="text" class="Input"><h6>Grantee's Date of Birth:</h6><input type="text" class="Input"><h6>Grantee's Gender:</h6><input type="text" class="Input">
+      <h6>Grantee's Employment Status:</h6><input type="text" class="Input"><h6>Grantee's Address:</h6><input type="text" class="Input"><h6>Grantee's NIN:</h6><input type="text" class="Input">
     </div>
     <div class="end">
       <img src="stamp.jpeg" alt="stamp">
@@ -101,4 +101,21 @@
     </div>
   </div>
 </body>
+  <script>
+  const input = document.getElementByClassName("Input");
+
+  input.addEventListener("input", () => {
+    // Create a temporary span to measure the text width
+    const tempSpan = document.createElement("span");
+    tempSpan.style.visibility = "hidden";
+    tempSpan.style.whiteSpace = "pre";
+    tempSpan.style.font = window.getComputedStyle(input).font; // Match input's font styles
+    tempSpan.textContent = input.value || input.placeholder; // Use input text or placeholder if empty
+    document.body.appendChild(tempSpan);
+
+    // Adjust input width based on span width
+    input.style.width = `${tempSpan.offsetWidth + 5}px`; // Add a little padding
+    document.body.removeChild(tempSpan); // Clean up the span
+  });
+</script>
 </html>
