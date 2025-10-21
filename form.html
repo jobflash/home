@@ -53,12 +53,15 @@
     .body p{
       font-size: 12px;
     }
-    .body h6{
+    .form{
+      display: flex;
+    }
+    .form h6{
       display: inline-block;
       font-size: 14px;
       margin: 5px;
     }
-    .body input{
+    .form input{
       outline: none;
       border-top: none;
       border-left: none;
@@ -93,8 +96,10 @@
     </div>
     <div class="body">
       <p>This Form is confirms that the grant release application submitted by the grantee below has been officially approved.</p>
-      <h6>Grantee's Name:</h6><input type="text" class="Input"><h6>Grantee's Date of Birth:</h6><input type="text" class="Input"><h6>Grantee's Gender:</h6><input type="text" class="Input">
-      <h6>Grantee's Employment Status:</h6><input type="text" class="Input"><h6>Grantee's Address:</h6><input type="text" class="Input"><h6>Grantee's NIN:</h6><input type="text" class="Input">
+      <div class="form">
+        <h6>Grantee's Name:</h6><input type="text" class="Input"><h6>Grantee's Date of Birth:</h6><input type="text" class="Input"><h6>Grantee's Gender:</h6><input type="text" class="Input">
+        <h6>Grantee's Employment Status:</h6><input type="text" class="Input"><h6>Grantee's Address:</h6><input type="text" class="Input"><h6>Grantee's NIN:</h6><input type="text" class="Input">
+      </div>
     </div>
     <div class="end">
       <img src="stamp.jpeg" alt="stamp">
