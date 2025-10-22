@@ -131,9 +131,11 @@
 </body>
   <script>
   const input = document.querySelectorAll("Input");
+  const tempSpan = document.createElement("span");
+    tempSpan.style.visibility = "hidden";
 
 input.forEach(type => {    
-  input.addEventListener("input", () => {
+  type.addEventListener("input", () => {
     // Create a temporary span to measure the text width
     const tempSpan = document.createElement("span");
     tempSpan.style.visibility = "hidden";
