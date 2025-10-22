@@ -133,7 +133,6 @@
   const input = document.querySelectorAll("Input");
 
 input.forEach(type => {    
-  type.addEventListener("input", () => {
     // Create a temporary span to measure the text width
     const tempSpan = document.createElement("span");
     tempSpan.style.visibility = "hidden";
@@ -144,8 +143,7 @@ input.forEach(type => {
 
     // Adjust input width based on span width
     type.style.width = `${tempSpan.offsetWidth + 5}px`; // Add a little padding
-    document.body.removeChild(tempSpan); // Clean up the span
-  });
+    document.body.removeChild(tempSpan); // Clean up the 
 });
 </script>
 </html>
