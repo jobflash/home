@@ -96,11 +96,14 @@
     }   
     .bottom button{
       background: transparent;
-      color: #000;
+      color: grey;
     }
     .bottom i{
       font-size: 18px;
       display: block;
+    }
+    .active{
+      color: #000;
     }
   </style>
 </head>
@@ -140,11 +143,11 @@
       </div>
     
       <div class="bottom">
-        <button><i class="fa fa-home" aria-hidden="true"></i>Accounts</button>      
-        <button><i class="fa fa-area-chart" aria-hidden="true"></i>Trade</button>
-        <button><i class="fa fa-globe" aria-hidden="true"></i>Insights</button>
-        <button><i class="fa fa-heartbeat" aria-hidden="true"></i>Performance</button>     
-        <button><i class="fa fa-user" aria-hidden="true"></i>Profile</button>
+        <button class="bottomBtn active"><i class="fa fa-home" aria-hidden="true"></i>Accounts</button>      
+        <button class="bottomBtn"><i class="fa fa-area-chart" aria-hidden="true"></i>Trade</button>
+        <button class="bottomBtn"><i class="fa fa-globe" aria-hidden="true"></i>Insights</button>
+        <button class="bottomBtn"><i class="fa fa-heartbeat" aria-hidden="true"></i>Performance</button>     
+        <button class="bottomBtn"><i class="fa fa-user" aria-hidden="true"></i>Profile</button>
       </div>
     </div>
     <script src="sw.js"></script>
