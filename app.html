@@ -163,6 +163,14 @@
     .active{
       color: #000;
     }
+    .modal{
+      position: fixed;
+      bottom: 0;
+      height: 90%;
+      z-index: 1000;
+      overflow-y: auto;
+      transition: all 0.3s ease;
+    }
   </style>
 </head>
   <body>
@@ -223,6 +231,10 @@
         <button class="bottomBtn"><i class="fa fa-globe" aria-hidden="true"></i>Insights</button>
         <button class="bottomBtn"><i class="fa fa-heartbeat" aria-hidden="true"></i>Performance</button>     
         <button class="bottomBtn"><i class="fa fa-user" aria-hidden="true"></i>Profile</button>
+      </div>
+      
+      <div class="modal">
+        
       </div>
     </div>
     <script src="sw.js"></script>
