@@ -309,9 +309,59 @@
     </div>
     <script src="sw.js"></script>
   </body>
-	<script>
-		
-	</script>
+<script>
+// Initialize all custom selects
+document.querySelectorAll('.select').forEach(select => {
+  const input = select.querySelector('.datalistInput');
+  const arrow = select.querySelector('.arrow');
+  const options = select.querySelector('.options');
+  const optionItems = select.querySelectorAll('.options li');
+  
+  // Toggle this specific dropdown
+  input.addEventListener('click', () => toggleDropdown(select));
+  arrow.addEventListener('click', () => toggleDropdown(select));
+  
+  // Handle option selection for this dropdown
+  optionItems.forEach(option => {
+    option.addEventListener('click', () => {
+      input.value = option.textContent;
+      hideDropdown(select);
+      input.focus();
+    });
+  });
+});
+	function toggleDropdown(select) {
+  const options = select.querySelector('.options');
+  const arrow = select.querySelector('.arrow');
+  
+  if (options.style.display === 'block') {
+    hideDropdown(select);
+  } else {
+    // Close all other dropdowns first
+    document.querySelectorAll('.custom-select').forEach(s => {
+      if (s !== select) hideDropdown(s);
+    });
+    showDropdown(select);
+  }
+}
+
+function showDropdown(select) {
+  const options = select.querySelector('.options');
+  const arrow = select.querySelector('.arrow');
+  
+  options.style.display = 'block';
+  arrow.style.transform = 'translateY(-50%) rotate(180deg)';
+}
+
+function hideDropdown(select) {
+  const options = select.querySelector('.options');
+  const arrow = select.querySelector('.arrow');
+  
+  options.style.display = 'none';
+  arrow.style.transform = 'translateY(-50%) rotate(0deg)';
+}
+
+</script>
 </html>
     
 
