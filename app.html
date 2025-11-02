@@ -290,18 +290,34 @@
         </div>
 
         <div class="modalBody">
-          <div class="payMet">
-            <p>Payment Method</p>
-            <div class="select">
-              <input type="text" class="datalistInput" id="employ" placeholder="Please select one"  readonly>
-              <div class="arrow">▼</div>
-              <ul class="options">
-                <li data-value="Self-Employed">Self-Employed</li>
-                <li data-value="Student">Student</li>
-                <li data-value="Employed">Employed</li>
-                <li data-value="Unemployed">Unemployed</li>
-              </ul>
-            </div>
+			<div class="select">	
+				<p>Payment Method</p>
+				<input type="text" class="datalistInput" id="employ" placeholder="Please select one"  readonly>
+				<div class="arrow">▼</div>
+				<ul class="options">
+					<li data-value="Self-Employed">Self-Employed</li>
+					<li data-value="Student">Student</li>
+					<li data-value="Employed">Employed</li>
+					<li data-value="Unemployed">Unemployed</li>
+				</ul>
+			</div>
+			  
+			<div>
+				
+			</div>
+			
+			<div class="select">	
+				<p>Payment Method</p>
+				<input type="text" class="datalistInput" id="employ" placeholder="Please select one"  readonly>
+				<div class="arrow">▼</div>
+				<ul class="options">
+					<li data-value="Self-Employed">Self-Employed</li>
+					<li data-value="Student">Student</li>
+					<li data-value="Employed">Employed</li>
+					<li data-value="Unemployed">Unemployed</li>
+				</ul>
+			</div>
+
           </div>
           
         </div>
@@ -330,7 +346,7 @@ document.querySelectorAll('.select').forEach(select => {
     });
   });
 });
-	function toggleDropdown(select) {
+function toggleDropdown(select) {
   const options = select.querySelector('.options');
   const arrow = select.querySelector('.arrow');
   
