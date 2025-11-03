@@ -508,9 +508,12 @@ function hideDropdown(select) {
 		const value = parseFloat(e.target.value) || 0;
 		const button = document.getElementById('depoSubmit');
 		if (value > 17497) {
-			// Handle the case where the input field is empty
+			// Handle the case where the input field is not small
 			button.classList.add('colored');
-		} else {
+		} else if (value < 14409902) {
+			// Handle the case where the input field is not big
+			button.classList.add('colored');	
+		} else { 
 			// Handle the case where the input field has a value
 			button.classList.remove('colored');
 		}
