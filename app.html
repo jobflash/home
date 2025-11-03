@@ -504,7 +504,7 @@ function hideDropdown(select) {
 	//Deposit submit button styling
 	const keyDown = document.getElementById('keyDown');
 	
-	keyDown.addEventListener('keydown', function(e){ 
+	keyDown.addEventListener('input', function(e){ 
 		const value = parseFloat(e.target.value);
 		const button = document.getElementById('depoSubmit');
 		if (value < 17497) {
