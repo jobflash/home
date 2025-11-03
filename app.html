@@ -505,9 +505,9 @@ function hideDropdown(select) {
 	const keyDown = document.getElementById('keyDown');
 	
 	keyDown.addEventListener('keydown', function(e){ 
-		const value = e.target.value.trim();
+		const value = parseFloat(e.target.value);
 		const button = document.getElementById('depoSubmit');
-		if (value === '') {
+		if (value < 17497) {
 			// Handle the case where the input field is empty
 			button.classList.remove('colored');
 		} else {
