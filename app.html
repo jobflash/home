@@ -197,10 +197,16 @@
 	.modalTitle h3{
 		margin: 5px 0;
 	}
-	.modalTitle button, .amountBtn{
+	.modalTitle button{
 		background: transparent;
 		padding: 0;
 		font-size: 14px;
+		font-weight: 400;
+	} 
+	  .amountBtn{
+		background: transparent;
+		padding: 0;
+		font-size: 12px;
 		font-weight: 400;
 	}
 	.modalBody{
@@ -499,6 +505,7 @@ function hideDropdown(select) {
 	const keyDown = document.getElementById('keyDown');
 	
 	keyDown.addEventListener('keydown', function(e){
+		alert('found');
 		const button = document.getElementById('depoSubmit');
 		button.classList.add('colored');
 	});
