@@ -250,6 +250,14 @@
 		margin: 0 5px;
 	}
 	.arba{
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+		pointer-events: none;
+		color: #666;
+		padding: 0;
+		transition: transform 0.2s ease;
 		display: flex;
 	}
 	.arba p{
@@ -419,7 +427,7 @@
 			<p class="pahe">Payment Method</p>
 			<div class="select">	
 				<input type="text" class="datalistInput" placeholder="Please select one"  readonly>
-				<div class="arrow arba"><p>$23,473.04</p>▼</div>
+				<div class="arba"><p>$23,473.04</p>▼</div>
 				<ul class="options">
 					<div class="firstLi"><li data-value="Self-Employed">MT5:   592631072</li></div>
 				</ul>
