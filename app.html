@@ -464,7 +464,8 @@ document.querySelectorAll('.select').forEach(select => {
   // Toggle this specific dropdown
   input.addEventListener('click', () => toggleDropdown(select));
   arrow.addEventListener('click', () => toggleDropdown(select));
-  
+
+	alert(firstList.textContent);
   // Handle option selection for this dropdown
   input.value = firstList.textContent;
 	
