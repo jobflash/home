@@ -495,9 +495,11 @@ function toggleDropdown(select) {
 function showDropdown(select) {
   const options = select.querySelector('.options');
   const arrow = select.querySelector('.arrow');
+  const arrowP = select.querySelector('.arrow p');
   
   options.style.display = 'block';
   arrow.style.transform = 'translateY(-50%) rotate(180deg)';
+  arrowP.style.transform = 'translateY(-50%) rotate(0deg)';
 }
 
 function hideDropdown(select) {
