@@ -507,12 +507,12 @@ function hideDropdown(select) {
 	keyDown.addEventListener('input', function(e){ 
 		const value = parseFloat(e.target.value) || 0;
 		const button = document.getElementById('depoSubmit');
-		if (value < 17497) {
+		if (value > 17497) {
 			// Handle the case where the input field is empty
-			button.classList.remove('colored');
+			button.classList.add('colored');
 		} else {
 			// Handle the case where the input field has a value
-			button.classList.add('colored');
+			button.classList.remove('colored');
 		}
 	});
 
