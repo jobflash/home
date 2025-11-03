@@ -485,7 +485,7 @@ function toggleDropdown(select) {
     hideDropdown(select);
   } else {
     // Close all other dropdowns first
-    document.querySelectorAll('.selectwa').forEach(s => {
+    document.querySelectorAll('.select').forEach(s => {
       if (s !== select) hideDropdown(s);
     });
     showDropdown(select);
