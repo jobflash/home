@@ -302,6 +302,9 @@
 		border: 1px solid rgba(0, 0, 0, 0.5);
 		padding: 12px;
 	}
+	.colored{
+		background: dodgerblue;
+	}
   </style>
 </head>
   <body>
@@ -497,7 +500,7 @@ function hideDropdown(select) {
 	
 	keyDown.addEventListener('keydown', function(e){
 		const button = document.getElementById('depoSubmit');
-		
+		button.classList.add('colored');
 	});
 
 </script>
