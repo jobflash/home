@@ -417,7 +417,7 @@
 			<p class="pahe">Payment Method</p>
 			<div class="select">	
 				<input type="text" class="datalistInput" readonly>
-				<div class="arrow"><p>$23,473.04</p>▼</div>
+				<div class="arrow noFlip"><p>$23,473.04</p>▼</div>
 				<ul class="options">
 					<div class="firstLi"><li data-value="Self-Employed">MT5:   592631072</li></div>
 				</ul>
@@ -426,7 +426,7 @@
 			<p class="pahe">Amount</p>
 			<div class="amtIn">
 				<input type="tel" id="keyDown" placeholder="0">
-				<div class="arba">NGN</div>
+				<div class="arrow">NGN</div>
 			</div>
 			<button class="amountBtn">17,497 - 14,409,902 NGN</button>
 
@@ -495,11 +495,11 @@ function toggleDropdown(select) {
 function showDropdown(select) {
   const options = select.querySelector('.options');
   const arrow = select.querySelector('.arrow');
-  const arrowP = select.querySelector('.arrow p');
+  const noFlip = select.querySelector('.noFlip');
   
   options.style.display = 'block';
   arrow.style.transform = 'translateY(-50%) rotate(180deg)';
-  arrowP.style.transform = 'translateY(-50%) rotate(0deg)';
+  arrowP.style.transform = 'translateY(-50%) rotate(360deg)';
 }
 
 function hideDropdown(select) {
