@@ -465,9 +465,11 @@ document.querySelectorAll('.select').forEach(select => {
   input.addEventListener('click', () => toggleDropdown(select));
   arrow.addEventListener('click', () => toggleDropdown(select));
 
-	alert(firstList.textContent);
   // Handle option selection for this dropdown
-  input.value = firstList.textContent;
+
+  firstList.forEach(list => {
+  input.value = list.textContent;
+  });
 	
   optionItems.forEach(option => {
     option.addEventListener('click', () => {
@@ -525,5 +527,3 @@ function hideDropdown(select) {
 
 </script>
 </html>
-    
-
