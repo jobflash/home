@@ -415,12 +415,12 @@
 
 			<p class="pahe">Amount</p>
 			<div class="amtIn">
-				<input type="tel" placeholder="0">
+				<input type="tel" id="keyDown" placeholder="0">
 				<div class="arrow arba">NGN</div>
 			</div>
 			<button class="amountBtn">17,497 - 14,409,902 NGN</button>
 
-			<div class="deMain"><button>Continue</button></div>
+			<div class="deMain"><button id="depoSubmit">Continue</button></div>
 
 			<div class="terms">
 				<h4>Terms</h4>
@@ -491,6 +491,14 @@ function hideDropdown(select) {
   options.style.display = 'none';
   arrow.style.transform = 'translateY(-50%) rotate(0deg)';
 }
+
+	//Deposit submit button styling
+	const keyDown = document.getElementById('keyDown');
+	
+	keyDown.addEventListener('keydown', function(e){
+		const button = document.getElementById('depoSubmit');
+		
+	});
 
 </script>
 </html>
