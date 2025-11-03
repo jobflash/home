@@ -389,7 +389,7 @@
 				<input type="text" class="datalistInput" id="employ" placeholder="Please select one"  readonly>
 				<div class="arrow">▼</div>
 				<ul class="options">
-					<li class="firstLi" data-value="Self-Employed">Self-Employed</li>
+					<div class="firstLi"><li data-value="Self-Employed">MT5:   592631072</li></div>
 					<li data-value="Student">Student</li>
 					<li data-value="Employed">Employed</li>
 					<li data-value="Unemployed">Unemployed</li>
@@ -409,7 +409,7 @@
 				<input type="text" class="datalistInput" id="employ" placeholder="Please select one"  readonly>
 				<div class="arrow">▼</div>
 				<ul class="options">
-					<li class="firstLi" data-value="Self-Employed">Self-Employed</li>
+					<div class="firstLi"><li data-value="Self-Employed">MT5:   592631072</li></div>
 					<li data-value="Student">Student</li>
 					<li data-value="Employed">Employed</li>
 					<li data-value="Unemployed">Unemployed</li>
@@ -421,7 +421,7 @@
 				<input type="text" class="datalistInput" placeholder="Please select one"  readonly>
 				<div class="arrow arba"><p>$23,473.04</p>▼</div>
 				<ul class="options">
-					<li class="firstLi" data-value="Self-Employed">MT5:   592631072</li>
+					<div class="firstLi"><li data-value="Self-Employed">MT5:   592631072</li></div>
 				</ul>
 			</div>
 
@@ -459,7 +459,7 @@ document.querySelectorAll('.select').forEach(select => {
   const arrow = select.querySelector('.arrow');
   const options = select.querySelector('.options');
   const optionItems = select.querySelectorAll('.options li');
-  const firstList = select.querySelectorAll('.firstLi');
+  const firstList = select.querySelectorAll('.firstLi li');
   
   // Toggle this specific dropdown
   input.addEventListener('click', () => toggleDropdown(select));
