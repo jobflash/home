@@ -504,9 +504,16 @@ function hideDropdown(select) {
 	//Deposit submit button styling
 	const keyDown = document.getElementById('keyDown');
 	
-	keyDown.addEventListener('keydown', function(e){
+	keyDown.addEventListener('keydown', function(e){ 
+		const value = e.target.value.trim();
 		const button = document.getElementById('depoSubmit');
-		button.classList.add('colored');
+		if (value === '') {
+			// Handle the case where the input field is empty
+			button.classList.remove('colored');
+		} else {
+			// Handle the case where the input field has a value
+			button.classList.add('colored');
+		}
 	});
 
 </script>
