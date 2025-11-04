@@ -37,12 +37,27 @@
       margin: 100px 15px 0;	
 	}
 	.header{
-		margin: 0;
+		margin: 10px 0;
 	}
 	.header h3{
 		font-size: 2rem;
 		margin: 0;
 		font-weight: 900;
+	}
+	.header.in-top {
+		position: fixed;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: auto;
+		margin-top: 0;
+		padding: 10px 30px;
+		background: transparent;
+		z-index: 1001;
+	}
+	.header.in-top h1 {
+		font-size: 1.5rem;
+		margin-bottom: 0;
 	}
     .dashboard{
       padding: 15px;
