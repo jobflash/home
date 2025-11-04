@@ -649,7 +649,7 @@ function hideDropdown(select) {
 
         // Close all modals (useful for resetting state)
         function closeAllModals() {
-            const modals = document.querySelectorAll('.modal-overlay');
+            const modals = document.querySelectorAll('.modal');
             modals.forEach(modal => {
                 modal.classList.remove('active');
             });
