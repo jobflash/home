@@ -614,28 +614,32 @@ function hideDropdown(select) {
         }
 
         // Close pop-up function
-        function closePopup() {
-            deposit.classList.remove('active');
+        function closePopup(modal) {
+            modal.classList.remove('active');
             document.body.style.overflow = 'auto'; // Restore scrolling
 
 		// Close pop-up when clicking outside content
-        deposit.addEventListener('click', function(e) {
-            if (e.target === deposit) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
                 closePopup();
             }
         });
 
         // Close pop-up with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && deposit.classList.contains('active')) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closePopup();
             }
         });
         }
 
         // Event listeners
-        openDeposit.addEventListener('click', openPopup(deposit));
-        closeDeposit.addEventListener('click', closePopup);
+        openDeposit.addEventListener('click', function(){
+			openPopup(deposit);
+		}
+        closeDeposit.addEventListener('click', function(){
+			closePopup(deposit);
+		}
 	
 
        
