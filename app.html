@@ -617,13 +617,8 @@ function hideDropdown(select) {
         function closePopup() {
             deposit.classList.remove('active');
             document.body.style.overflow = 'auto'; // Restore scrolling
-        }
 
-        // Event listeners
-        openDeposit.addEventListener('click', openPopup(deposi));
-        closeDeposit.addEventListener('click', closePopup);
-
-			 // Close pop-up when clicking outside content
+		// Close pop-up when clicking outside content
         deposit.addEventListener('click', function(e) {
             if (e.target === deposit) {
                 closePopup();
@@ -636,6 +631,11 @@ function hideDropdown(select) {
                 closePopup();
             }
         });
+        }
+
+        // Event listeners
+        openDeposit.addEventListener('click', openPopup(deposit));
+        closeDeposit.addEventListener('click', closePopup);
 	
 
        
