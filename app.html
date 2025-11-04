@@ -608,34 +608,41 @@ function hideDropdown(select) {
         const deposit = document.getElementById('deposit');
 
         // Open pop-up function
-        function openPopup() {
-            deposit.classList.add('active');
+        function openPopup(modal) {
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
 
         // Close pop-up function
-        function closePopup() {
-            deposit.classList.remove('active');
+        function closePopup(modal) {
+            modal.classList.remove('active');
             document.body.style.overflow = 'auto'; // Restore scrolling
         }
 
         // Event listeners
-        openDeposit.addEventListener('click', openPopup);
-        closeDeposit.addEventListener('click', closePopup);
+        function clicks(openModal, closeModal, modal) {
+        openModal.addEventListener('click', openPopup(modal));
+        closeModal.addEventListener('click', closePopup(modal));
 
-        // Close pop-up when clicking outside content
-        deposit.addEventListener('click', function(e) {
-            if (e.target === deposit) {
-                closePopup();
+			 // Close pop-up when clicking outside content
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closePopup(modal);
             }
         });
 
         // Close pop-up with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && deposit.classList.contains('active')) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closePopup();
             }
         });
+		}
+	
+        clicks(openDeposit, closeDeposit, deposit);
+	
+
+       
 
 </script>
 </html>
