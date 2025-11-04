@@ -617,20 +617,6 @@ function hideDropdown(select) {
         function closePopup(modal) {
             modal.classList.remove('active');
             document.body.style.overflow = 'auto'; // Restore scrolling
-
-		// Close pop-up when clicking outside content
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closePopup();
-            }
-        });
-
-        // Close pop-up with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closePopup();
-            }
-        });
         }
 
         // Event listeners
@@ -638,7 +624,7 @@ function hideDropdown(select) {
 			openPopup(deposit);
 		}
         closeDeposit.addEventListener('click', function(){
-			closePopup(deposit);
+			closePopup(deposi);
 		}
 	
 
