@@ -603,30 +603,68 @@ function hideDropdown(select) {
         });
 	
         // Pop up modal
-        const openDeposit = document.getElementById('openDeposit');
-        const closeDeposit = document.getElementById('closeDeposit');
-        const deposit = document.getElementById('deposit');
-
-        // Open pop-up function
-        function openPopup() {
-            deposit.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                
+                // Add event listener for Escape key
+                document.addEventListener('keydown', handleEscapeKey);
+                
+                // Add event listener for outside click
+                modal.addEventListener('click', handleOutsideClick);
+            }
         }
 
-        // Close pop-up function
-        function closePopup(modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+                
+                // Remove event listeners
+                document.removeEventListener('keydown', handleEscapeKey);
+                modal.removeEventListener('click', handleOutsideClick);
+            }
         }
-	openPopup();
 
-        // Event listeners
-        openDeposit.addEventListener('click', function(){
-			openPopup;
-		}
-        closeDeposit.addEventListener('click', function(){
-			closePopup(deposi);
-		}     
+        // Close modal with Escape key
+        function handleEscapeKey(e) {
+            if (e.key === 'Escape') {
+                // Find the currently active modal and close it
+                const activeModal = document.querySelector('.modal-overlay.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        }
 
+        // Close modal when clicking outside content
+        function handleOutsideClick(e) {
+            if (e.target === this) {
+                closeModal(this.id);
+            }
+        }
+
+        // Close all modals (useful for resetting state)
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+            
+            // Remove all event listeners
+            document.removeEventListener('keydown', handleEscapeKey);
+            modals.forEach(modal => {
+                modal.removeEventListener('click', handleOutsideClick);
+            });
+        }
+
+        // Initialize modals on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can add any initialization code here if needed
+        });
 </script>
 </html>
