@@ -351,7 +351,7 @@
       </div>
 
       <div class="headDash">
-      <div class="header">
+      <div id="header" class="header">
 		  <h3>Accounts</h3>
 	  </div>
 
@@ -559,6 +559,34 @@ function hideDropdown(select) {
 			button.classList.remove('colored');
 		}
 	});
+	
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('header');
+            const fixedTop = document.querySelector('.top');
+            
+            // Calculate when header should jump to fixed top
+            const headerOffset = header.offsetTop;
+            const fixedTopHeight = fixedTop.offsetHeight;
+            
+            function handleScroll() {
+                const scrollPosition = window.scrollY;
+                
+                if (scrollPosition >= headerOffset - fixedTopHeight) {
+                    // Header should be in fixed top
+                    header.classList.add('in-top');
+                    // document.body.classList.add('header-in-top');
+                } else {
+                    // Header should be in normal position
+                    header.classList.remove('in-top');
+                    document.body.classList.remove('header-in-top');
+                }
+			}
+            // Initial check on page load
+            handleScroll();
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', handleScroll);
+        });
 
 </script>
 </html>
