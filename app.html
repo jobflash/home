@@ -609,7 +609,6 @@ function hideDropdown(select) {
 
         // Open pop-up function
         function openPopup(modal) {
-			
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
@@ -621,7 +620,7 @@ function hideDropdown(select) {
         }
 
         // Event listeners
-        openDeposit.addEventListener('click', openPopup(deposit));
+        openDeposit.addEventListener('click', openPopup(deposi));
         closeDeposit.addEventListener('click', closePopup);
 
 			 // Close pop-up when clicking outside content
