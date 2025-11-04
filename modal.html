@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pop-up Div on Button Click</title>
+    <title>Multi-Popup Modal System</title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             width: 100%;
             text-align: center;
             color: white;
@@ -41,11 +41,19 @@
             opacity: 0.9;
         }
 
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
         .btn {
             background: #ff6b6b;
             color: white;
             border: none;
-            padding: 15px 40px;
+            padding: 15px 30px;
             font-size: 1.1rem;
             border-radius: 50px;
             cursor: pointer;
@@ -53,18 +61,32 @@
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
         }
 
+        .btn-info {
+            background: #4dabf7;
+            box-shadow: 0 4px 15px rgba(77, 171, 247, 0.4);
+        }
+
+        .btn-success {
+            background: #51cf66;
+            box-shadow: 0 4px 15px rgba(81, 207, 102, 0.4);
+        }
+
+        .btn-warning {
+            background: #ffa94d;
+            box-shadow: 0 4px 15px rgba(255, 169, 77, 0.4);
+        }
+
         .btn:hover {
-            background: #ff5252;
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn:active {
             transform: translateY(1px);
         }
 
-        /* Pop-up Styles */
-        .popup-overlay {
+        /* Modal Styles */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -80,12 +102,12 @@
             transition: all 0.3s ease;
         }
 
-        .popup-overlay.active {
+        .modal-overlay.active {
             opacity: 1;
             visibility: visible;
         }
 
-        .popup-content {
+        .modal-content {
             background: white;
             width: 90%;
             max-width: 500px;
@@ -97,11 +119,11 @@
             position: relative;
         }
 
-        .popup-overlay.active .popup-content {
+        .modal-overlay.active .modal-content {
             transform: scale(1);
         }
 
-        .popup-close {
+        .modal-close {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -111,31 +133,40 @@
             cursor: pointer;
             color: #777;
             transition: color 0.2s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
-        .popup-close:hover {
+        .modal-close:hover {
+            background: #f1f3f5;
             color: #333;
         }
 
-        .popup-title {
+        .modal-title {
             color: #333;
             margin-bottom: 15px;
             font-size: 1.8rem;
         }
 
-        .popup-text {
+        .modal-text {
             color: #555;
             line-height: 1.6;
             margin-bottom: 20px;
         }
 
-        .popup-image {
+        .modal-image {
             width: 100%;
             border-radius: 10px;
             margin-bottom: 20px;
+            max-height: 200px;
+            object-fit: cover;
         }
 
-        .popup-btn {
+        .modal-btn {
             background: #4dabf7;
             color: white;
             border: none;
@@ -146,7 +177,7 @@
             transition: background 0.3s;
         }
 
-        .popup-btn:hover {
+        .modal-btn:hover {
             background: #339af0;
         }
 
@@ -178,6 +209,16 @@
                 font-size: 2rem;
             }
             
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
             .features {
                 flex-direction: column;
                 align-items: center;
@@ -192,77 +233,164 @@
 </head>
 <body>
     <div class="container">
-        <h1>Interactive Pop-up Example</h1>
-        <p>Click the button below to see a beautifully animated pop-up in action</p>
-        <button class="btn" id="openPopup">Open Pop-up</button>
+        <h1>Multi-Popup Modal System</h1>
+        <p>Click any button below to open different modals using the same function</p>
+        
+        <div class="button-container">
+            <button class="btn" onclick="openModal('welcomeModal')">Welcome Modal</button>
+            <button class="btn btn-info" onclick="openModal('infoModal')">Info Modal</button>
+            <button class="btn btn-success" onclick="openModal('successModal')">Success Modal</button>
+            <button class="btn btn-warning" onclick="openModal('warningModal')">Warning Modal</button>
+        </div>
         
         <div class="features">
             <div class="feature">
                 <i>✨</i>
-                <h3>Smooth Animation</h3>
+                <h3>Reusable Function</h3>
+                <p>One function for all modals</p>
             </div>
             <div class="feature">
                 <i>🎨</i>
-                <h3>Modern Design</h3>
+                <h3>Multiple Styles</h3>
+                <p>Different modal types</p>
             </div>
             <div class="feature">
                 <i>📱</i>
                 <h3>Responsive</h3>
+                <p>Works on all devices</p>
             </div>
         </div>
     </div>
 
-    <!-- Pop-up Structure -->
-    <div class="popup-overlay" id="popupOverlay">
-        <div class="popup-content">
-            <button class="popup-close" id="closePopup">&times;</button>
-            <h2 class="popup-title">Welcome to Our Pop-up!</h2>
-            <p class="popup-text">
-                This is a beautifully designed pop-up that appears when you click the button. 
-                It features smooth animations, a clean layout, and is fully responsive.
+    <!-- Welcome Modal -->
+    <div class="modal-overlay" id="welcomeModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('welcomeModal')">&times;</button>
+            <h2 class="modal-title">Welcome to Our Site!</h2>
+            <p class="modal-text">
+                This is a welcome modal that appears when you click the first button.
+                It uses the same openModal and closeModal functions as all other modals.
             </p>
-            <p class="popup-text">
-                You can close this pop-up by clicking the X button, clicking outside the content,
+            <p class="modal-text">
+                You can close this modal by clicking the X button, clicking outside the content,
                 or pressing the Escape key on your keyboard.
             </p>
-            <button class="popup-btn">Learn More</button>
+            <button class="modal-btn" onclick="closeModal('welcomeModal')">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Info Modal -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('infoModal')">&times;</button>
+            <h2 class="modal-title">Information Center</h2>
+            <p class="modal-text">
+                This is an information modal with different content and styling.
+                Notice how it uses the same functions but displays unique content.
+            </p>
+            <p class="modal-text">
+                The reusable modal system makes it easy to maintain and extend.
+            </p>
+            <button class="modal-btn" onclick="closeModal('infoModal')">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('successModal')">&times;</button>
+            <h2 class="modal-title">Success!</h2>
+            <p class="modal-text">
+                Your action has been completed successfully. This modal demonstrates
+                how you can create different types of modals for various purposes.
+            </p>
+            <p class="modal-text">
+                All modals share the same underlying JavaScript functions.
+            </p>
+            <button class="modal-btn" onclick="closeModal('successModal')">Continue</button>
+        </div>
+    </div>
+
+    <!-- Warning Modal -->
+    <div class="modal-overlay" id="warningModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('warningModal')">&times;</button>
+            <h2 class="modal-title">Important Warning</h2>
+            <p class="modal-text">
+                This is a warning modal with important information. 
+                The reusable modal system allows you to create as many modals as needed.
+            </p>
+            <p class="modal-text">
+                Each modal has its own unique ID that is passed to the openModal and closeModal functions.
+            </p>
+            <button class="modal-btn" onclick="closeModal('warningModal')">I Understand</button>
         </div>
     </div>
 
     <script>
-        // Get DOM elements
-        const openPopupBtn = document.getElementById('openPopup');
-        const closePopupBtn = document.getElementById('closePopup');
-        const popupOverlay = document.getElementById('popupOverlay');
-
-        // Open pop-up function
-        function openPopup() {
-            popupOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        // Reusable modal functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                
+                // Add event listener for Escape key
+                document.addEventListener('keydown', handleEscapeKey);
+                
+                // Add event listener for outside click
+                modal.addEventListener('click', handleOutsideClick);
+            }
         }
 
-        // Close pop-up function
-        function closePopup() {
-            popupOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+                
+                // Remove event listeners
+                document.removeEventListener('keydown', handleEscapeKey);
+                modal.removeEventListener('click', handleOutsideClick);
+            }
         }
 
-        // Event listeners
-        openPopupBtn.addEventListener('click', openPopup());
-        closePopupBtn.addEventListener('click', closePopup);
-
-        // Close pop-up when clicking outside content
-        popupOverlay.addEventListener('click', function(e) {
-            if (e.target === popupOverlay) {
-                closePopup();
+        // Close modal with Escape key
+        function handleEscapeKey(e) {
+            if (e.key === 'Escape') {
+                // Find the currently active modal and close it
+                const activeModal = document.querySelector('.modal-overlay.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
             }
-        });
+        }
 
-        // Close pop-up with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
-                closePopup();
+        // Close modal when clicking outside content
+        function handleOutsideClick(e) {
+            if (e.target === this) {
+                closeModal(this.id);
             }
+        }
+
+        // Close all modals (useful for resetting state)
+        function closeAllModals() {
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+            
+            // Remove all event listeners
+            document.removeEventListener('keydown', handleEscapeKey);
+            modals.forEach(modal => {
+                modal.removeEventListener('click', handleOutsideClick);
+            });
+        }
+
+        // Initialize modals on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can add any initialization code here if needed
         });
     </script>
 </body>
