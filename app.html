@@ -620,6 +620,8 @@ function hideDropdown(select) {
         }
 
         // Event listeners
+        openDeposit.addEventListener('click', openPopup(deposit));
+	
         function clicks(openModal, closeModal, modal) {
         openModal.addEventListener('click', openPopup(modal));
         closeModal.addEventListener('click', closePopup(modal));
