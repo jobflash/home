@@ -210,8 +210,8 @@
       overflow-y: auto;
       overflow-x: hidden;
       box-sizing: border-box;
-      /*opacity: 0;
-      visibility: hidden;*/
+      opacity: 0;
+      visibility: hidden;
       transition: all 0.3s ease;
 	}
 	.modal.active{
@@ -384,7 +384,7 @@
         
         <div class="dashButtons">      
           <button><div class="icon home"><i class="fa fa-area-chart" aria-hidden="true"></i></div>Trade</button>
-          <button><div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>Deposit</button>
+          <button id="openDeposit"><div class="icon"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>Deposit</button>
           <button><div class="icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>Withdraw</button>
           <button><div class="icon"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></div>Details</button>
         </div>
@@ -416,9 +416,9 @@
         <button class="bottomBtn"><i class="fa fa-user" aria-hidden="true"></i>Profile</button>
       </div>
       
-      <div class="modal">
+      <div id="deposit" class="modal">
         <div class="xclose">
-          <button>&times;</button>
+          <button id="closeDeposit">&times;</button>
         </div>
         
         <div class="modalTitle">
@@ -597,6 +597,41 @@ function hideDropdown(select) {
             
             // Listen for scroll events
             window.addEventListener('scroll', handleScroll);
+        });
+	
+        // Pop up modal
+        const openDeposit = document.getElementById('openDeposit');
+        const closeDeposit = document.getElementById('closeDeposit');
+        const deposit = document.getElementById('deposit');
+
+        // Open pop-up function
+        function openPopup() {
+            deposit.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        // Close pop-up function
+        function closePopup() {
+            deposit.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Event listeners
+        openDeposit.addEventListener('click', openPopup);
+        closeDeposit.addEventListener('click', closePopup);
+
+        // Close pop-up when clicking outside content
+        deposit.addEventListener('click', function(e) {
+            if (e.target === deposit) {
+                closePopup();
+            }
+        });
+
+        // Close pop-up with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && deposit.classList.contains('active')) {
+                closePopup();
+            }
         });
 
 </script>
