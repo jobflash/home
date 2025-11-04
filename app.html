@@ -608,7 +608,8 @@ function hideDropdown(select) {
         const deposit = document.getElementById('deposit');
 
         // Open pop-up function
-        function openPopup(modal) {
+        function openPopup(popUp) {
+			const modal = popUp;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         }
@@ -621,6 +622,7 @@ function hideDropdown(select) {
 
         // Event listeners
         openDeposit.addEventListener('click', openPopup(deposit));
+        closeDeposit.addEventListener('click', closePopup(deposit));
 	
         function clicks(openModal, closeModal, modal) {
         openModal.addEventListener('click', openPopup(modal));
