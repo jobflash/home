@@ -571,7 +571,7 @@ function hideDropdown(select) {
             function handleScroll() {
                 const scrollPosition = window.scrollY;
                 
-                if (scrollPosition >= headerOffset - fixedTopHeight) {
+                if (scrollPosition > headerOffset - fixedTopHeight) {
                     // Header should be in fixed top
                     header.classList.add('in-top');
                     // document.body.classList.add('header-in-top');
