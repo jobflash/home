@@ -99,15 +99,18 @@
 	}
     .tradesHead button{
       background: transparent;
-      color: #000;
+      color: rgba(3, 3, 3, 0.3);
       margin: 0;
       width: 100%;
       white-space: nowrap;
       padding-bottom: 10px;
       font-size: 12px;
       border: none;
-      border-bottom: 1.5px solid #000;
     }
+    .tradesHead button.active{
+      color: #000;
+      border-bottom: 1.5px solid #000;
+	}
     .trades{
       text-align: center;
       margin-top: 80px;
@@ -170,7 +173,7 @@
 
       <div class="body">
         <div class="tradesHead">
-          <button>Favorite</button>
+          <button class="active">Favorite</button>
           <button>Most Traded</button>
           <button>Top Movers</button>
           <button>Major currencies</button>
