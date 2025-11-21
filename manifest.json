@@ -2,7 +2,7 @@
   "name": "My Forex Broker",
   "short_name": "Exness",
   "description": "The best forex broker and trading app",
-  "start_url": "index.html",
+  "start_url": "app.html",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#f2f2f3",
