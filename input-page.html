@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;margin-top:100px;">
+  <h1>Type here → appears everywhere instantly</h1>
+  <input id="i" placeholder="Type and press Enter" style="font-size:30px;padding:15px;width:90%;max-width:500px;">
+  
+  <script src="https://cdn.scaledrone.com/scaledrone.min.js"></script>
+  <script>
+    const drone = new ScaleDrone('zsR2HKYCP97ZPKyc'); // ← real public test channel
+    drone.on('open', () => console.log('Connected!'));
+    
+    document.getElementById('i').addEventListener('keyup', e => {
+      if (e.key === 'Enter' && e.target.value.trim()) {
+        drone.publish({
+          room: 'observable-demo2025',
+          message: e.target.value.trim()
+        });
+        e.target.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
