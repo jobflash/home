@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+  <meta property="og:title" content="Buy and redeem gift tokens, instant withdraw to account">
+  <link href="public/preview.png" rel="icon" type="images/png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta property="og:discription" content="Starmart">
+  <style>
+  body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Top Ad Styles */
+.top {
+	position: fixed;
+	top: 0;
+	display: flex;
+	background: #fff;
+	margin: 0;
+	justify-content: space-between;
+	box-sizing: border-box;
+	align-items: center;
+	width: 100%;
+  padding: 10px 20px;
+  z-index: 1000;
+  border-bottom: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.logo p{
+	font-size: 24px;
+	font-family: "Poppins", "Manrope", system-ui, sans-serif;
+  font-weight: 700;     
+  letter-spacing: -0.6px;
+  color: #0066ff;
+	margin: 0;
+}
+.logo i {
+	font-size: 30px;
+	margin-right: 10px;
+}
+.topBtn button{
+	font-size: 14px;
+	background: #fff;
+	color: #0066ff;
+	border: 2px solid #0066ff;
+	padding: 8px 12px;
+	border-radius: 20px;
+	display: none;
+}
+/* Header */
+.header {
+  text-align: center;
+  padding: 2rem;
+  background-image: url('public/starmart.jpeg'); 
+  background-position: bottom; 
+  background-size: cover;
+  border-top: 10px solid black;
+	height: 70px;   
+}
+
+.header h1, .lower h1 {
+  font-size: 3rem;
+  color: #ff6f61;
+  margin: 0;
+  filter: drop-shadow(2px 4px 6px black);
+  opacity: 0;
+}
+
+.header p, .lower p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #ff6f61;
+  opacity: 0;
+}
+
+/* Content */
+.content {
+  padding: 0.5rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h4 {
+  color: #0066ff;
+  margin-bottom: 0.5rem;
+  font-size: 20px;
+}
+
+p, ul, li {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1rem;
+}
+/* Body */
+.container {
+	margin: 5px 0;
+    padding: 20px 0px 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+	overflow: hidden;
+}
+#messageDiv {
+	margin-top: 10px;
+}
+	  
+.user {
+	margin: 10px;
+	border: 1px solid rgba(0, 0, 0, 0.4);
+	padding: 5px;
+}
+	  
+.upset, .downset {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+} 
+
+.box {
+	border: 1px solid blue;
+	display: block;
+	text-align: center;
+	width: 25%;
+}
+	  
+.box i {
+	margin: auto 5px;
+} 
+
+.box p {
+	margin: 0;	
+	display: block;
+}
+	  
+
+  </style>
+</head>
+<body>
+<!-- Top Page Advertisement -->
+  <div class="top">
+    <div class="logo">
+      <p><i class="fa fa-balance-scale" aria-hidden="true"></i><strong>Starmart</strong></p>
+	</div>
+	<div class="topBtn">
+		<button id="redeemBtn">Redeem Token</button>
+	</div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <h1>Starmart</h1>
+    <p>Gift Token Like No Other</p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Form Part -->
+    <section class="featured" id="redeemed">
+		<div class="container">
+			<div id="messageDisplay">
+				<div class="user">
+					<div class="upset">
+						<div class="box">
+							<h4>Status</h4>
+							<p><i class="fa fa-heartbeat" style="color: green;" aria-hidden="true"></i></p>
+						</div>
+					
+						<div class="box">
+							<h4>UserID</h4>
+							<p class="id">NF3582333</p>
+						</div>
+					
+						<div class="box">
+							<h4>Demo Acc</h4>
+							<p><span>703206822</span><i class="fa fa-clipboard" aria-hidden="true"></i></p>
+						</div>
+					
+						<div class="box">
+							<h4>Real Acc</h4>
+							<p>Opay 123975374</p>
+						</div>
+					</div>
+					
+					<div class="downset">
+						<div class="box">
+							<h4>Name</h4>
+							<p>Adeola Esther Seyi</p>
+						</div>
+					
+						<div class="box">
+							<h4>Sent</h4>
+							<p>$<span>2000</span></p>
+						</div>
+					
+						<div class="box">
+							<h4>Request Pay</h4>
+							<p class="account">True</p>
+						</div>
+					
+						<div class="box">
+							<h4>Update</h4>
+							<p>Repay</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+    </section>
+  </main>
+
+  <script src="sw.js"></script>
+</body>
+</html>
+  
+  
