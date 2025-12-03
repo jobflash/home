@@ -152,7 +152,7 @@ section {
 	padding: 8px 12px;
 	border-radius: 20px;
 	text-align: center;
-	width: 100%;
+	margin: auto;
 }
   </style>
 </head>
@@ -257,6 +257,7 @@ section {
 
 		function clear() {
 			localStorage.removeItem('savedUsers');
+			displaySavedUsers();
 		}
 
         // Function to fetch new messages using long-polling
@@ -291,7 +292,7 @@ section {
                     displaySavedUsers();
                 } else {
                     savedUsers.push({
-						status: 'offline',
+						status: "offline",
                         userId: newUserId,
                         demoAcc: message.demoAcc,
 						realAcc: message.realAcc,
