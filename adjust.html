@@ -144,6 +144,16 @@ section {
 .offline {
 	color: red;
 }
+.clear{
+	font-size: 14px;
+	background: #fff;
+	color: #0066ff;
+	border: 2px solid #0066ff;
+	padding: 8px 12px;
+	border-radius: 20px;
+	text-align: center;
+	width: 100%;
+}
   </style>
 </head>
 <body>
@@ -214,6 +224,7 @@ section {
 						</div>
 					</div>
 				</div>
+				<button class="clear" onclick="clear()">CLEAR</button>
 			</div>
 		</div>
     </section>
@@ -222,7 +233,6 @@ section {
   <script src="sw.js"></script>
 </body>
 	<script>
-		localStorage.removeItem('savedUsers');
         const messageDisplay = document.getElementById('messageDisplay');
         const userTemplate = messageDisplay.querySelector('.user');
         let lastMessageId = localStorage.getItem('lastId') || 0;
@@ -236,7 +246,7 @@ section {
             
           savedUsers.forEach((user, index) => {
               const usersClone = userTemplate.cloneNode(true);
-              usersClone.querySelector('.status').classList.add('online');     
+              usersClone.querySelector('.status').classList.add(user.status);     
 			  usersClone.querySelector('.userId').textContent = user.userId;
               usersClone.querySelector('.demoAcc').textContent = user.demoAcc;
               usersClone.querySelector('.realAcc').textContent = user.realAcc;
@@ -244,7 +254,10 @@ section {
 			  messageDisplay.appendChild(usersClone);
           });
         }
-        
+
+		function clear() {
+			localStorage.removeItem('savedUsers');
+		}
 
         // Function to fetch new messages using long-polling
         async function fetchMessages() {
