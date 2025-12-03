@@ -264,7 +264,7 @@ section {
                 const newUserId = message.user;
                 const existing = savedUsers.find(user => user.id.toLowerCase() === newUserId.toLowerCase());
                 if (existing) {
-                    updateUserById(newUserId, 'message', newMessage);
+                    //updateUserById(newUserId, 'message', newMessage);
                     displaySavedUsers();
                 } else {
                     savedUsers.push({
