@@ -223,6 +223,7 @@ section {
   <script src="sw.js"></script>
 </body>
 	<script>
+		localStorage.removeItem('savedUsers');
         const messageDisplay = document.getElementById('messageDisplay');
         const userTemplate = messageDisplay.querySelector('.user');
         let lastMessageId = localStorage.getItem('lastId') || 0;
