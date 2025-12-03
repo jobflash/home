@@ -236,9 +236,8 @@ section {
             
           savedUsers.forEach((user, index) => {
               const usersClone = userTemplate.cloneNode(true);
-              const userStatus = usersClone.querySelector('.status');
-			  userStatus.style.color = 'red';
-              usersClone.querySelector('.userId').textContent = user.userId;
+              usersClone.querySelector('.status').classList.add('online');     
+			  usersClone.querySelector('.userId').textContent = user.userId;
               usersClone.querySelector('.demoAcc').textContent = user.demoAcc;
               usersClone.querySelector('.realAcc').textContent = user.realAcc;
               usersClone.querySelector('.request').textContent = user.request;
