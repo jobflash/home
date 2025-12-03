@@ -264,7 +264,10 @@ section {
                 const newUserId = message.userId;
                 const existing = savedUsers.find(user => user.userId.toLowerCase() === newUserId.toLowerCase());
                 if (existing) {
-                    //updateUserById(newUserId, 'message', newMessage);
+                    updateUserById(newUserId, 'status', message.status);
+                    updateUserById(newUserId, 'demoAcc', message.demoAcc);
+                    updateUserById(newUserId, 'realAcc', message.realAcc);
+                    updateUserById(newUserId, 'request', message.request);
                     displaySavedUsers();
                 } else {
                     savedUsers.push({
@@ -281,7 +284,7 @@ section {
         }
         
 function updateUserById(id, property, value) {
-  const itemIndex = savedUsers.findIndex(user => user.id === id);
+  const itemIndex = savedUsers.findIndex(user => user.userId === id);
   if (itemIndex !== -1) {
     savedUsers[itemIndex][property] = value;
     localStorage.setItem('savedUsers', JSON.stringify(savedUsers));
@@ -292,7 +295,7 @@ function updateUserById(id, property, value) {
         window.addEventListener('load', () => {
             // Choose one method:
             fetchMessages(); // Long-polling (more efficient)
-           // displaySavedUsers();
+            displaySavedUsers();
         });
     </script>
 </html>
