@@ -229,19 +229,12 @@ section {
             
           savedUsers.forEach((user, index) => {
               const usersClone = userTemplate.cloneNode(true);
-              usersClone.querySelector('.id').textContent = user.id;
-              usersClone.querySelector('.message').textContent = user.message;
-              usersClone.querySelector('.account').textContent = user.account;
-              const form = usersClone.querySelector('.form');
-              
-              form.addEventListener('submit', (event) => {
-                  event.preventDefault();
-                  const formData = new FormData(form);
-                  const message = formData.get('input');
-                  updateUserById(user.id, 'account', message);
-              })
-              messageDisplay.appendChild(usersClone);
-          });
+              usersClone.querySelector('.status').textContent = user.status;
+              usersClone.querySelector('.userId').textContent = user.userId;
+              usersClone.querySelector('.demoAcc').textContent = user.demoAcc;
+              usersClone.querySelector('.realAcc').textContent = user.userId;
+              usersClone.querySelector('.request').textContent = user.demoAcc;
+		  }
         }
         
 
