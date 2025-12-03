@@ -261,8 +261,8 @@ section {
        
         function extractMessages(messages) {
             messages.forEach(message => {
-                const newUserId = message.user;
-                const existing = savedUsers.find(user => user.id.toLowerCase() === newUserId.toLowerCase());
+                const newUserId = message.userId;
+                const existing = savedUsers.find(user => user.userId.toLowerCase() === newUserId.toLowerCase());
                 if (existing) {
                     //updateUserById(newUserId, 'message', newMessage);
                     displaySavedUsers();
