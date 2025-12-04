@@ -139,6 +139,9 @@ section {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+.aza p {
+	margin: 1px;
+}
 .status i {
 	font-size: 24px;
 }
@@ -201,9 +204,10 @@ section {
 							<p class="demoAcc">703206822</p>
 						</div>
 					
-						<div class="box">
+						<div class="box aza">
 							<h4>Real Acc</h4>
-							<p class="realAcc">Opay 123975374</p>
+							<p class="account">Opay</p>
+							<p class="realAcc">123975374</p>
 						</div>
 					</div>
 					
@@ -256,6 +260,7 @@ section {
               usersClone.querySelector('.status').classList.add(user.status);     
 			  usersClone.querySelector('.userId').textContent = user.userId;
               usersClone.querySelector('.demoAcc').textContent = user.demoAcc;
+			  usersClone.querySelector('.account').textContent = user.account;
               usersClone.querySelector('.realAcc').textContent = user.realAcc;
               usersClone.querySelector('.request').textContent = user.request;
 			  messageDisplay.appendChild(usersClone);
@@ -306,6 +311,9 @@ section {
 					if(message.demoAcc){
 						updateUserById(newUserId, 'demoAcc', message.demoAcc);
 					}
+					if(message.account){
+						updateUserById(newUserId, 'account', message.account);
+					}
 					if(message.realAcc){
 						updateUserById(newUserId, 'realAcc', message.realAcc);
 					}
@@ -319,6 +327,7 @@ section {
 						status: message.status,
                         userId: newUserId,
                         demoAcc: message.demoAcc,
+						account: message.account,
 						realAcc: message.realAcc,
                         request: message.request
                     });
@@ -344,5 +353,3 @@ function updateUserById(id, property, value) {
         });
     </script>
 </html>
-  
-  
