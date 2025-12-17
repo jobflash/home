@@ -11,6 +11,9 @@
     const timeAgoElement = document.getElementById('timeAgo');
     const STORAGE_KEY = 'lastActivityTime';
 
+    
+    localStorage.removeItem(STORAGE_KEY);
+    
     // Format time difference in a human-readable way
     function formatTimeAgo(timestamp) {
       const now = Date.now();
