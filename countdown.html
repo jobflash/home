@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Persistent Countdown</title>
+</head>
+<body>
+  <h2>Countdown: <span id="countdown">00:00</span></h2>
+
+  <script>
+    // Set your countdown duration here (in minutes or seconds)
+    const COUNTDOWN_DURATION_MINUTES = 20; // Change this value as needed
+    const COUNTDOWN_DURATION_MS = COUNTDOWN_DURATION_MINUTES * 60 * 1000;
+
+    const countdownElement = document.getElementById('countdown');
+
+    function startCountdown() {
+      let endTime = localStorage.getItem('countdownEndTime');
+
+      // If no previous countdown exists, start a new one
+      if (!endTime) {
+        endTime = Date.now() + COUNTDOWN_DURATION_MS;
+        localStorage.setItem('countdownEndTime', endTime);
+      } else {
+        endTime = parseInt(endTime);
+      }
+
+      function update() {
+        const now = Date.now();
+        const timeLeft = endTime - now;
+
+        if (timeLeft <= 0) {
+          countdownElement.textContent = "00:00";
+          localStorage.removeItem('countdownEndTime'); // Clean up
+          clearInterval(interval);
+          countdownElement.textContent = "Time's up!";
+          return;
+        }
+
+        const minutes = Math.floor(timeLeft / 60000);
+        const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+        countdownElement.textContent = 
+          `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        // Save remaining time in case page is refreshed
+        localStorage.setItem('countdownEndTime', endTime);
+      }
+
+      update(); // Initial call
+      const interval = setInterval(update, 500); // Update every 0.5s for smoothness
+    }
+
+    // Optional: Reset countdown (e.g., button)
+    function resetCountdown() {
+      localStorage.removeItem('countdownEndTime');
+      startCountdown();
+    }
+
+    // Start on load
+    startCountdown();
+  </script>
+
+  <button onclick="resetCountdown()">Reset Countdown</button>
+</body>
+</html>
