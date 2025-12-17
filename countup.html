@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Ago Tracker</title>
+</head>
+<body>
+  <p>Last activity: <span id="timeAgo">just now</span></p>
+  <button onclick="updateTimestamp()">Update Now</button>
+
+  <script>
+    const timeAgoElement = document.getElementById('timeAgo');
+    const STORAGE_KEY = 'lastActivityTime';
+
+    // Format time difference in a human-readable way
+    function formatTimeAgo(timestamp) {
+      const now = Date.now();
+      const diffInSeconds = Math.floor((now - timestamp) / 1000);
+
+      if (diffInSeconds < 60) return 'just now';
+      if (diffInSeconds < 120) return '1 minute ago';
+      if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} minutes ago`;
+      if (diffInSeconds < 7200) return '1 hour ago';
+      if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} hours ago`;
+      if (diffInSeconds < 172800) return 'yesterday';
+      if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)} days ago`;
+      if (diffInSeconds < 1209600) return 'last week';
+      if (diffInSeconds < 2629746) return `${Math.floor(diffInSeconds / 604800)} weeks ago`;
+      if (diffInSeconds < 31556952) return `${Math.floor(diffInSeconds / 2629746)} months ago`;
+
+      return `${Math.floor(diffInSeconds / 31556952)} years ago`;
+    }
+
+    function updateTimestamp() {
+      const now = Date.now();
+      localStorage.setItem(STORAGE_KEY, now);
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const savedTime = localStorage.getItem(STORAGE_KEY);
+      if (!savedTime) {
+        timeAgoElement.textContent = 'never';
+        return;
+      }
+
+      const timestamp = parseInt(savedTime);
+      timeAgoElement.textContent = formatTimeAgo(timestamp);
+    }
+
+    // Update display every 30 seconds for smooth "time ago" updates
+    setInterval(updateDisplay, 30000);
+
+    // Initial load
+    updateDisplay();
+
+    // Optional: Update when page becomes visible (after user returns)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) updateDisplay();
+    });
+  </script>
+</body>
+</html>
