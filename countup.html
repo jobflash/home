@@ -5,14 +5,17 @@
 </head>
 <body>
   <p>Last activity: <span id="timeAgo">just now</span></p>
-  <button onclick="updateTimestamp()">Update Now</button>
+  <button onclick="updateTimestamp()">Restart Now</button>
+  <button onclick="removeKey()">Stop</button>
 
   <script>
     const timeAgoElement = document.getElementById('timeAgo');
     const STORAGE_KEY = 'lastActivityTime';
 
-    
-    localStorage.removeItem(STORAGE_KEY);
+    function removeKey() {
+      localStorage.removeItem(STORAGE_KEY);
+      updateDisplay();
+    }
     
     // Format time difference in a human-readable way
     function formatTimeAgo(timestamp) {
