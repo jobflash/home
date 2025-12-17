@@ -16,7 +16,8 @@
       const now = Date.now();
       const diffInSeconds = Math.floor((now - timestamp) / 1000);
 
-      if (diffInSeconds < 60) return 'just now';
+      if (diffInSeconds < 10) return 'just now';
+      if (diffInSeconds < 60) return `${diffInSeconds} seconds ago`;
       if (diffInSeconds < 120) return '1 minute ago';
       if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} minutes ago`;
       if (diffInSeconds < 7200) return '1 hour ago';
