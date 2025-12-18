@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Time Trackers</title>
+  <style>
+    .tracker { margin: 15px 0; padding: 10px; background: #f5f5f5; border-radius: 8px; }
+    .label { font-weight: bold; }
+    .time { color: #0066cc; }
+    button { margin-left: 10px; padding: 5px 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Multiple Time Trackers</h2>
+
+  <div class="tracker">
+    <span class="label">Last Login:</span>
+    <span class="time" data-tracker="lastLogin">never</span>
+    <button onclick="updateTracker('lastLogin')">Update Now</button>
+  </div>
+
+  <div class="tracker">
+    <span class="label">Last Message Sent:</span>
+    <span class="time" data-tracker="lastMessage">never</span>
+    <button onclick="updateTracker('lastMessage')">Send Message</button>
+  </div>
+
+  <div class="tracker">
+    <span class="label">Last Purchase:</span>
+    <span class="time" data-tracker="lastPurchase">never</span>
+    <button onclick="updateTracker('lastPurchase')">Buy Now</button>
+  </div>
+
+  <div class="tracker">
+    <span class="label">Button Clicked:</span>
+    <span class="time" data-tracker="btnClick">never</span>
+    <button onclick="updateTracker('btnClick')">Click Me</button>
+  </div>
+
+  <!-- Add as many as you want! -->
+
+  <script>
+    // Central function to update any tracker by key
+    function updateTracker(key) {
+      const now = Date.now();
+      localStorage.setItem(`tracker_${key}`, now);
+      refreshAllTrackers(); // Update display immediately
+    }
+
+    // Format milliseconds into "X minutes ago", etc.
+    function formatTimeAgo(timestamp) {
+      if (!timestamp) return 'never';
+
+      const seconds = Math.floor((Date.now() - timestamp) / 1000);
+
+      if (seconds < 60) return 'just now';
+      if (seconds < 120) return '1 minute ago';
+      if (seconds < 3600) return `${Math.floor(seconds / 60)} minutes ago`;
+      if (seconds < 7200) return '1 hour ago';
+      if (seconds < 86400) return `${Math.floor(seconds / 3600)} hours ago`;
+      if (seconds < 172800) return 'yesterday';
+      if (seconds < 604800) return `${Math.floor(seconds / 86400)} days ago`;
+
+      const date = new Date(timestamp);
+      return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    // Refresh all tracker displays
+    function refreshAllTrackers() {
+      document.querySelectorAll('[data-tracker]').forEach(el => {
+        const key = el.getAttribute('data-tracker');
+        const timestamp = localStorage.getItem(`tracker_${key}`);
+        el.textContent = formatTimeAgo(timestamp ? parseInt(timestamp) : null);
+      });
+    }
+
+    // Auto-refresh every 30 seconds
+    setInterval(refreshAllTrackers, 30000);
+
+    // Update when page becomes visible (user returns)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) refreshAllTrackers();
+    });
+
+    // Initial load
+    refreshAllTrackers();
+  </script>
+</body>
+</html>
