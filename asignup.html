@@ -401,9 +401,9 @@
 			const type = passwordInput.type === 'password' ? 'text' : 'password';
 			passwordInput.type = type;
 			confirmInput.type = type;
-
-			 icon.classList.remove('fa-eye');
-			icon.classList.add('fa-eye-slash');
+ 
+			icon.classList.toggle('fa-eye');
+			icon.classList.toggle('fa-eye-slash');
 		});
 		
         form.addEventListener('submit', (event) => {
