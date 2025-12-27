@@ -171,13 +171,14 @@
 	margin: 0;
 	position: relative;
 }
-.password i {
+.password button {
 	text-align: right;
 	position: absolute;
 	top: 50%;
 	right: 10%;
 	width: 90%;
-	z-index: 5000;
+	background: none;
+	border: none;
 }
 	  
 #response {
@@ -252,7 +253,7 @@
 					<div class="password">
 						<label for="password">Password</label>
 						<input type="password" id="password" name="password" placeholder="create a strong password">
-						<i id="eye" class="fas fa-eye"></i>
+						<button><i id="eye" class="fas fa-eye"></i></button>
 					</div>
 					
 					<label for="confirmPassword">Confirm Password</label>
