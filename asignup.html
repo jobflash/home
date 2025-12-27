@@ -254,7 +254,7 @@
 					<div class="password">
 						<label for="password">Password</label>
 						<input type="password" id="password" name="password" placeholder="create a strong password">
-						<button type="button"><i id="eye" class="fas fa-eye"></i></button>
+						<button type="button" id="toggleButton"><i id="eye" class="fas fa-eye"></i></button>
 					</div>
 					
 					<label for="confirmPassword">Confirm Password</label>
@@ -392,12 +392,15 @@
 		// Password Show/Hide
 		const passwordInput = document.getElementById('password');
 		const confirmInput = document.getElementById('confirmPassword');
-		const toggleButton = document.getElementById('eye');
+		const eye = document.getElementById('eye');
+		const toggleButton = document.getElementById('toggleButton');
 		
 		toggleButton.addEventListener('click', () => {
 			const type = passwordInput.type === 'password' ? 'text' : 'password';
 			passwordInput.type = type;
 			confirmInput.type = type;
+			
+			eye.classList.toggle('fa-eye-slash');
 		});
 		
         form.addEventListener('submit', (event) => {
